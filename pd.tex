@@ -1,0 +1,263 @@
+\documentclass[twocolumn,10pt]{article}
+\oddsidemargin 0.1in
+%\addtolength{\textwidth}{1in}
+\addtolength{\textheight}{1.5in}
+
+
+\title{Model Engineering College Ernakulam
+\\Department of Computer Engineering\\CS 16L2 Mini Project
+\\ Project Proposal \& Design Report \\Sales management system\\}
+
+\author{Group No. 2\\CSU13102 Abhijith Hari S\\CSU13111 Ashwin Anandram Shenoy U\\CSU13146 Rejeth Vijayan\\CSU13148 Sarath Sajeev\\}
+
+\usepackage{epsfig}
+\begin{document}
+	
+\maketitle
+	
+{\bf Keywords: Sales, product, salary, profit, employees}
+
+\abstract{The projects aims at creation of a online platform
+for sales management. It can be used by conglomer-
+ates with multiple products in any sales domain. It
+generates statistical analysis for sales and employee
+performances. Complete sales report on a day to day
+or quadrants basis can be generated. It helps in op-
+timizing production and sales managements.The sys-
+tem is based on a online database so that managers
+can update their sales report and view it from any-
+where. This increases the portability of the product.} 
+\section{Introduction}
+Project is a web based application that aims on providing a day to day sales report to the managers which can be referred to for the companies' growth.The sales report provides details about the sails and profits attained by the company through each sales agent.
+
+
+\section{\label{reflabel}Problem Statement}
+To create a sales management portal to manage pro-
+duction and sales. The databases are analyzed and
+produce statistics and report to optimize production
+and sales.
+\section{Proposed Solution}
+The production and management of the products are
+determined and controlled on the basis of the report
+analysis generated from the database. A graphical
+representation of the analyzed report is generated
+based on different parameters.
+Annual, quadrant or day-to-day reports can be com-
+puted and analyzed. Funds utilized for sales can be
+tracked along. Employees can be classified into dif-
+ferent reward slots and thereby provide according in-
+centives and bonus. Hence funds can be allocated for
+further marketing and publicity.
+\subsection{Input}
+\begin{itemize}
+   \item The user credentials to log into the system
+   \item User details
+   \item Product details
+   \item Sales details
+\end{itemize}
+\subsection{Output}
+\begin{itemize}
+   \item Sales log
+   \item Agent rating
+   \item Quadrant analysis
+   \item Location based analysis
+\end{itemize}
+\section{Relevance \& Applications of the Project}
+The project is capable of automating the process of collecting and generating reports from various agents who has been assigned for sales of the product of the company. The corresponding managers can review their working and improve the sales based on analysis. This can be implemented in various institution which handle sales and marketing of various products.
+\section{Design Documentation}
+\subsection{Design description}
+The data is given as the input to the forms and after passing through certain query, it will check and process the data and finally store it in the database which is working at the back end of the system. Whenever the need arises the data can be fetched from the database.The system generates reports based on analysis of the sales transactions. Each user is provided with reports corresponding to their needs and requirements. Most of the information is stored in the database for the record of the organization.
+\subsection{Design Block Diagram}
+The Block diagram is attached with the file.
+\subsection{Algorithms}
+We have mainly three types of algorithm. First type deals with algorithms for the administrator, second one for the sales managers and the later one for sales agents. The basic functions of administrator are to add or remove managers and add production details. The functions of managers are to add or remove sales agents and to grant incentives. Sales agents are supposed to enter sales details. 
+\subsubsection{Add/Remove User}
+\begin{tabbing}
+xxxx\=xxxx\=xxxx\=xxxx\= \kill
+function addremoveuser(userid,contact details)\\
+\{\>\\
+\>Connect to DB\\
+   \>if(userid already exists)\\
+   \>\>return FALSE\\
+   \>Add entry to database\\
+   \>\>return TRUE\\
+   \}\>
+\end{tabbing}
+\subsubsection{Add Product}
+\begin{tabbing}
+xxxx\=xxxx\=xxxx\=xxxx\= \kill
+function addproduct(productid,product details)\\
+\{\>\\
+\>Connect to DB\\
+\>if(userid already exists)\\
+   \>\>return FALSE\\
+   \>Add entry to database\\
+   \>\>return TRUE\\
+   \}\>
+\end{tabbing}
+
+\subsubsection{Update Sales}
+\begin{tabbing}
+xxxx\=xxxx\=xxxx\=xxxx\= \kill
+function updatesales(poductid,unitssold,customername)\\
+\{\>\\
+\>Connect to DB\\
+\>if(pid exists)\\
+\>\>\{\>\\
+\>\>if(no of units sold$<$ $=$ product.stock)\\
+\>\>\>Insert sales details\\
+\>\>\>return true\\
+\>\>\}\>\\
+\>\>return false\\
+\>return false\\
+\}\>\\
+\end{tabbing}
+
+\subsubsection{Function Rating}
+\begin{tabbing}
+xxxx\=xxxx\=xxxx\=xxxx\= \kill
+function rating(userid,unitssold,product.price)\\
+\{\>\\
+\>Connect to DB\\
+\>Sum $=$0, price $=$ 0;\\
+\>while(!eof)\\
+\>\{\\
+\>\>if(agentid$=$ $>$ userid)\\
+\>\>\{\\
+\>\>\>price$=$product cost with id$=$pid sum$+$ $=$price$*$soldquatity)\\
+\>\>\}\>\\
+\>\}\>\\
+
+\>tp=targetamount of userid\\
+\>perc$=$sum$*$100\\ 
+\>targetamount(tp)\\
+\>if(perc $<$ $=$ 25)\\
+\>\>rating$=$1\\
+\>else if(perc$<$ $=$50)\\
+\>\>rating$=$2\\
+\>else if(perc$<$ $=$75)\\
+\>\>rating$=$3\\
+\>if(perc$<$ $=$100)\\
+\>\>rating$=$4\\
+\>else
+\>\>rating$=$5\\
+\}
+
+\end{tabbing}
+
+
+\subsection{Database Design}
+1.Admin\\\\
+\begin{tabular}{|c|c|c|c|}
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Username & Varchar(10) & not null & Username \\ 
+\hline 
+\rule[-1ex]{0pt}{2.5ex} Password & Varchar(10) & bot null & Password \\ 
+\hline 
+\end{tabular} \\
+
+\\ \\2.User\\
+\begin{tabular}{|c|c|c|c|}
+\hline 
+ID & Int & not null & Employee ID \\ 
+\hline 
+Name & Varchar(20) & not null & Name \\ 
+\hline 
+Address & Varchar(20) & not null & Address \\ 
+\hline 
+DOB & Date & not null & Date Of Birth \\ 
+\hline 
+Sex & Char & not null & Sex \\ 
+\hline 
+Email & Varchar(20) & not null & Email \\ 
+\hline 
+Phone & Int & not null & Phone \\ 
+\hline 
+Location  & Varchar(15) & not null & Location \\ 
+\hline 
+Position & Varchar(10) & not null & Postion \\ 
+\hline 
+Join\_\Date & Date & not null & Join Date \\ 
+\hline 
+Target\_\Price & Int & null & Target Price \\ 
+\hline 
+Salary & Int & not null & Salary \\ 
+\hline 
+Bonus & Int & null & Bonus \\ 
+\hline 
+Password & Varchar(20) & not null & Password \\ 
+\hline 
+Rating & Int & null & Rating \\ 
+\hline 
+\end{tabular}\\ 
+
+
+\\\\3.Sales\\
+\begin{tabular}{|c|c|c|c|}
+\hline
+Sales $_$ ID & Int & not null & Saled ID \\ 
+\hline 
+Date & Timestamp & not null & Date \\ 
+\hline 
+Agent $_$ ID & VarChar(10) & not null & Agent ID \\ 
+\hline 
+Product $_$ ID & VarChar(10) & not null & Product ID \\ 
+\hline 
+Units$_$Sold & Int & not null & Units Sold \\ 
+\hline 
+Cus$_$Addr & VarChar(20) & not null & Customer Address \\ 
+\hline 
+Cus$_$nam & VarChar(20) & not null & Customer Name \\ 
+\hline 
+\end{tabular}\\ 
+
+\\\\4.Product\\
+\begin{tabular}{|c|c|c|c|}
+\hline 
+Pid & Varchar(10) & not null & Product ID \\ 
+\hline 
+Units $_$ m & Int & not null & Number of manufactured units \\ 
+\hline 
+Category & Varchar(10) & not null & Category \\ 
+\hline 
+Name & Varchar(20) & not null & Name \\ 
+\hline 
+Cost & Int & not null & Cost \\ 
+\hline 
+Stock & Int & not null & Stock \\ 
+\hline 
+Production\_\Cost & BigInt & not null & Production Cost \\ 
+\hline 
+\end{tabular} \\
+
+
+\subsubsection{ER Diagram}
+The ER diagram is attached with the file.
+
+\section{Hardware \& Software Specifications}
+Hardware Requirement: PC with 2 GB hard disk
+and 1 GB RAM.
+\\Operating System: Linux
+\\Frontend(Interface): Web interface using HTML and
+JavaScript.
+\\Backend: Python/PHP
+\\Database Management System: MySQL
+\\Web Server: Apache HTTP Server v2
+
+
+\section{Project Work Schedule}
+\\\begin{tabular}{|c|c|c|c|}
+\hline
+Phase & Task to be done & Start date & Deadline \\ 
+\hline 
+1 & 1.User creation \\ &2.Manager Control detailing & Date & Date \\ 
+\hline 
+2 & 1.Transaction controls  \\ &2.Rating & Date & Date \\ 
+\hline 
+3 & 1.Agent controls  \\ &2.Report generation & Date & Date \\ 
+\hline 
+4 & 1.Alpha testing & Date & Date \\ 
+\hline 
+\end{tabular} 
+
+\end{document}
