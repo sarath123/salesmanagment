@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="materialize.css">
+    <meta charset="utf-8">
+    <title>Welcome</title>
+</head>
+
+<body>
+    <form action="1.php" method="get">
+        <fieldset>
+            <legend>Login</legend>
+            <p class="pink">Welcome</p>
+            <header id="demo">
+                <input type="text" placeholder="Username" autofocus required>
+                <br>
+                <input type="password" placeholder="Password" required>
+                <br>
+            </header>
+            <input type="submit">
+        </fieldset>
+        <script>
+            function show() {
+                document.getElementById("demo").innerHTML = "done";
+            }
+        </script>
+    </form>
+</body>
+
+</html>
