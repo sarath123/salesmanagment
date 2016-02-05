@@ -1,59 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html>    
+    <head>
+        <meta  charset="UTF-8">
+        <link rel="stylesheet" href="css/global.css">
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
 
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/global.css">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-    <title></title>
-    <h5 id="top">Sales Management System</h5>
-
-</head>
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+        <title></title>
+        <h5 id="top">Sales Management System</h5>
+   
+    </head>
 
 <body>
-
-    <p>
+        
+        <p>
         <div id="container">
-            <div class="row">
-                <form action="" method="post">
-                    <feildset>
-                        <div class="col s4 offset-s4">
-                            <input type="text" name="Name" placeholder="Username" required>
-                        </div>
-                        <br>
-                        <div class="col s4 offset-s4">
-                            <input type="email" name="useremail" placeholder="email" pattern="[a-zA-Z]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,}" title="example@example.com" required>
-                        </div>
-                        <br>
-                        <div class="col s4 offset-s4">
-                            <input type="password" name="password" placeholder="password" required>
-                        </div>
-                        <br>
-                        <div class="col s5 offset-s4">
-                            <input type="submit" class="btn waves-effect wave-light" value="Login In">
-                        </div>
-                        <br>
-                        <div class="col s4 offset-s4">
-                            <legend>
-                                <h6><br>If Not Member?</h6></legend>
-                        </div>
-                        <br>
-                        <br>
-                        <div class="col s6 offset-s4">
-                            <input type="button" class="btn waves-effect wave-light" value="Sign Up">
-                        </div>
-
-
-                    </feildset>
-                </form>
-            </div>
+        <div class="row"> 
+        <form action="" method="post">
+            <feildset>
+            <div class="col s4 offset-s4"><input type="text" name="Name" placeholder="Username"></div><br>
+            <div class="col s4 offset-s4"><input type="email" name="useremail" placeholder="email"></div><br>
+            <div class="col s4 offset-s4"><input type="password" name="password" placeholder="password"></div><br>
+            <div class="col s5 offset-s4"><input type="submit" class="btn waves-effect wave-light" value="Login In"></div><br>
+                <div class="col s4 offset-s4"><legend><h6>If Not Member?</h6></legend></div><br><br>        
+            <div class="col s6 offset-s4"><input type="submit" class="btn waves-effect wave-light" value="Sign In"></div>
+            
+                
+            </feildset>
+        </form>
         </div>
-    </p>
-</body>
-
+        </div>    
+        </p>
+    </body>
 </html>
