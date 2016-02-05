@@ -1,11 +1,14 @@
-body {
+html {
     backface-visibility: visible;
     font-family: "Trebuchet MS", sans-serif;
     padding:15px;
-    margin: auto;}
+    margin: auto;
+    align-content:stretch;
+}
+    
 
 input  { 
-    padding:15px;
+    padding:25px;
     margin: auto;
     display: inline-block;
     float: left;
@@ -13,16 +16,13 @@ input  {
 }
 
 
-.top {
+#top {
     font-family: "optima", sans-serif;
-    color: darkslategrey;
-    font-size: 12px;
-   
-    
-}
+    color: cadetblue;
+    font-size: 35px;}
 
-div{
-    padding: 5px;
+.row{
+    padding: 20px;
 }
 
     
