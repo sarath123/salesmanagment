@@ -20,40 +20,50 @@
     <p>
         <div id="container">
             <div class="row">
-                <form action="" method="post">
-                    <feildset>
-                        <div class="col s4 offset-s4">
-                            <input type="text" name="Name" placeholder="Username" required>
-                        </div>
-                        <br>
-                        <div class="col s4 offset-s4">
-                            <input type="email" name="useremail" placeholder="email" pattern="[a-zA-Z]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,}" title="example@example.com" required>
-                        </div>
-                        <br>
-                        <div class="col s4 offset-s4">
-                            <input type="password" name="password" placeholder="password" required>
-                        </div>
-                        <br>
-                        <div class="col s5 offset-s4">
-                            <input type="submit" class="btn waves-effect wave-light" value="Login In">
-                        </div>
-                        <br>
-                        <div class="col s4 offset-s4">
-                            <legend>
-                                <h6><br>If Not Member?</h6></legend>
-                        </div>
-                        <br>
-                        <br>
-                        <div class="col s6 offset-s4">
-                            <input type="button" class="btn waves-effect wave-light" value="Sign Up">
-                        </div>
+                <form id="sign" action="" method="post">
+
+                    <div class="col s4 offset-s4">
+                        <input type="text" name="Name" placeholder="Username" required>
+                    </div>
+                    <br>
+                    <div class="col s4 offset-s4">
+                        <input type="email" name="useremail" placeholder="email" pattern="[a-zA-Z0-9]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,}" title="example@example.com" required>
+                    </div>
+                    <br>
+                    <div class="col s4 offset-s4">
+                        <input type="password" name="password" placeholder="password" required>
+                    </div>
+                    <br>
+                    <div class="col s5 offset-s4">
+                        <input type="submit" class="btn waves-effect wave-light" value="Login In">
+                    </div>
+                    <br>
+                    <div class="col s4 offset-s4">
+                        <legend>
+                            <h6><br>If Not Member?</h6></legend>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="col s6 offset-s4">
+                        <input type="submit" onclick="signup()" class="btn waves-effect wave-light" value="Sign Up">
+                    </div>
 
 
-                    </feildset>
+
                 </form>
             </div>
         </div>
     </p>
+    <script>
+        function signup() {
+            document.getElementById("sign").action = "signup.html";
+            document.getElementById("sign").method = "";
+            document.getElementById("sign").innerHTML = "";
+
+
+        }
+    </script>
+
 </body>
 
 </html>
