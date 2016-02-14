@@ -35,7 +35,7 @@ require 'config.php';
 
 // define variables and set to empty values
 $nameErr = $emailErr = $addressErr = $passwordErr = $dobErr = $telErr = "";
-$name = $email = $address = $password = $dob = $tel = "";
+$name = $email = $address = $password = $dob = $tel = $sex = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
    if (empty($_POST["name"])) {
@@ -66,15 +66,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    }
     
    if (empty($_POST["dob"])) {
-     $genderErr = "Date of Birth is required";
+     $dobErr = "Date of Birth is required";
    } else {
-     $gender = test_input($_POST["dob"]);
+     $dob = test_input($_POST["dob"]);
    }
     
     if (empty($_POST["tel"])) {
-     $genderErr = "Phone Number is required";
+     $telErr = "Phone Number is required";
    } else {
-     $gender = test_input($_POST["tel"]);
+     $tel = test_input($_POST["tel"]);
    }
      
   if (empty($_POST["password"])) {
