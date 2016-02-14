@@ -21,16 +21,17 @@
     <p>
 
         <div class="row">
-            <form action="" method="post">
+            <form action="signup.php" method="post">
                 <feildset>
                     <legend>
                         <h6>Enter your details</h6></legend>
                     <div class="col s2 offset-s4">
-                        <input type="text" name="Name" placeholder="Name">
+                        <input type="text" name="name" placeholder="Name" required>
+                        <?php echo '$name'; ?>
                     </div>
                     <br>
                     <div class="col s4 offset-s4">
-                        <input type="email" name="useremail" placeholder="email" pattern="[a-zA-Z0-9]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,}">
+                        <input type="email" name="email" placeholder="email" pattern="[a-zA-Z0-9]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,}" required>
                     </div>
                     <br>
                     <legend>Sex</legend>
@@ -46,24 +47,24 @@
 
 
                     <div class="col s6 offset-s4">
-                        <input type="text" name="Address" placeholder="address">
+                        <input type="text" name="address" placeholder="address" required>
                     </div>
                     <br>
                     <div class="col s2 offset-s4">
-                        <input type="date" name="dob" placeholder="Date Of Birth">
+                        <input type="date" name="dob" placeholder="Date Of Birth" required>
                     </div>
                     <div class="col s4 offset-s4">
-                        <input type="text" name="tel" placeholder="Telephone number" pattern="[0-9]{10,10}">
+                        <input type="text" name="tel" placeholder="Telephone number" pattern="[0-9]{10,10}" required>
                     </div>
                     <div class="col s6 offset-s4">
-                        <input type="password" name="password" placeholder="Password">
+                        <input type="password" name="password" placeholder="Password" required>
                     </div>
                     <div class="col s6 offset-s4">
-                        <input type="password" name="pwd" placeholder="Confirm Password">
+                        <input type="password" name="pwd" placeholder="Confirm Password" required>
                     </div>
                     <br>
                     <div class="col s8 offset-s6">
-                        <input type="submit" class="btn waves-effect wave-light" value="Login In">
+                        <input type="submit" class="btn waves-effect wave-light" value="Sign Up">
                     </div>
                     <br>
                     <br>
