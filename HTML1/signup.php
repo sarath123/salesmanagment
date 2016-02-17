@@ -13,7 +13,7 @@
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <title></title>
 
-    <h5 id="top">Welcome to Sales Management System</h5>
+    <h5 id="top" style="text-align:center;">Sales Management System</h5>
 
 
 
@@ -36,6 +36,7 @@ require 'config.php';
 // define variables and set to empty values
 $nameErr = $emailErr = $addressErr = $passwordErr = $dobErr = $telErr = "";
 $name = $email = $address = $password = $dob = $tel = $sex = "";
+    $f = $q =0;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
    if (empty($_POST["name"])) {
@@ -46,6 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
        $nameErr = "Only letters and white space allowed"; 
      }
+       else
+           $f++;
    }
    
    if (empty($_POST["email"])) {
@@ -56,6 +59,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
        $emailErr = "Invalid email format"; 
      }
+       else
+           $f++;
    }
     
     
@@ -63,24 +68,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      $addressErr = "Address is required";
    } else {
      $address = test_input($_POST["address"]);
+      $f++;
    }
     
    if (empty($_POST["dob"])) {
      $dobErr = "Date of Birth is required";
    } else {
      $dob = test_input($_POST["dob"]);
+       $f++;
    }
     
     if (empty($_POST["tel"])) {
      $telErr = "Phone Number is required";
    } else {
      $tel = test_input($_POST["tel"]);
+        $f++;
    }
      
   if (empty($_POST["password"])) {
      $passwordErr = "Password requied";
-   } else {
+   } 
+    else if($_POST["password"]!=$_POST["pwd"]){
+    $passwordErr = "Password validation failed";
+           }
+    else {
      $password = test_input($_POST["password"]);
+      $f++;
    } 
 
 }
@@ -92,11 +105,17 @@ function test_input($data) {
    return $data;
 }
 
-$strSQL = "INSERT INTO login(username,email,password) VALUES('$name','$email','$password')"; 
+    if($f==6)
+    {
+        $strSQL = "INSERT INTO login(username,email,password) VALUES('$name','$email','$password')";
+        $q=mysql_query($strSQL);
+    }
 
-	$q=mysql_query($strSQL);
+	
 if($q)
-{echo "success";}
+{
+ header ('location: login.html');
+}
              mysql_close();
 
 ?>
@@ -104,12 +123,12 @@ if($q)
         <p>
 
             <div class="row">
-                <form action="signup.php" method="post">
-                    <feildset>
+                <form name="sign" method="post" action="signup.php">
+                    <fieldset style="border:0px;">
                         <legend>
-                            <h6>Enter your details</h6></legend>
+                            <h6 style="margin:100px;">Enter your details</h6></legend>
                         <div class="col s2 offset-s4">
-                            <input type="text" name="name" placeholder="Name" value="<?php echo $name;?>"><span class="error">* <?php echo $nameErr;?></span>
+                            <input type="text" name="name" placeholder="Name" value="<?php echo $name;?>"> <span class="error">* <?php echo $nameErr;?></span>
 
                         </div>
                         <br>
@@ -118,15 +137,16 @@ if($q)
                             <span class="error">* <?php echo $emailErr;?></span>
                         </div>
                         <br>
-                        <legend>Sex</legend>
+                        <fieldset style="border:0px">
+                            <legend>Sex</legend>
 
-                        <input class="radio-input" type="radio" id="radio1" name="radio-category" checked/>
-                        <label class="radio-label" for="radio1">Male</label>
+                            <input class="radio-input" type="radio" id="radio1" name="radio-category" checked/>
+                            <label class="radio-label" for="radio1">Male</label>
 
-                        <input class="radio-input" type="radio" id="radio2" name="radio-category" />
-                        <label class="radio-label" for="radio2">Female</label>
+                            <input class="radio-input" type="radio" id="radio2" name="radio-category" />
+                            <label class="radio-label" for="radio2">Female</label>
 
-
+                        </fieldset>
 
 
 
@@ -151,21 +171,20 @@ if($q)
                             <input type="password" name="pwd" placeholder="Confirm Password">
                         </div>
                         <br>
+                        <br>
                         <div class="col s8 offset-s6">
                             <input type="submit" class="btn waves-effect wave-light" value="Sign Up">
                         </div>
                         <br>
                         <br>
-                    </feildset>
+                    </fieldset>
                 </form>
             </div>
         </p>
 
 
-        <p>
 
 
-        </p>
 </body>
 
 </html>
