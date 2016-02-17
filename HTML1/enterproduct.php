@@ -13,8 +13,14 @@
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <title></title>
 
-    <h5 id="top" style="text-align:center;">Sales Management System</h5>
-
+    <nav>
+        <div class="nav-wrapper blue-grey darken-5">
+            <a href="#" class="brand-logo">Sales Management System</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="help.html">Help</a></li>
+            </ul>
+        </div>
+    </nav>
 
 
     <style>
