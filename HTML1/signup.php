@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+<<<<<<< Updated upstream
     <link rel="stylesheet" href="css/global.css">
     <title></title>
     <!-- Compiled and minified CSS -->
@@ -14,6 +15,26 @@
     <title></title>
 
     <h5 id="top" style="text-align:center;">Sales Management System</h5>
+=======
+   <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/materialize.css">
+        <link rel="stylesheet" href="css/materialize.min.css">
+        
+        <script src="js/materialize.js"></script>
+        <script src="js/materialize.min.js"></script>
+    
+        <link rel="stylesheet" href="font/material-design-icons">
+        <link rel="stylesheet" href="font/roboto">
+    
+     <nav>
+    <div class="nav-wrapper teal ">
+      <a href="#" class="brand-logo">Sales Management System</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="help.html">Help</a></li>
+        </ul>
+    </div>
+  </nav>
+>>>>>>> Stashed changes
 
 
 
