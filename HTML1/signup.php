@@ -3,19 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-<<<<<<< Updated upstream
-    <link rel="stylesheet" href="css/global.css">
-    <title></title>
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-    <title></title>
-
-    <h5 id="top" style="text-align:center;">Sales Management System</h5>
-=======
    <link rel="stylesheet" href="css/global.css">
         <link rel="stylesheet" href="css/materialize.css">
         <link rel="stylesheet" href="css/materialize.min.css">
@@ -34,7 +22,6 @@
         </ul>
     </div>
   </nav>
->>>>>>> Stashed changes
 
 
 
