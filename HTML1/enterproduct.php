@@ -11,7 +11,7 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-    <title></title>
+    <title> Enter Product Details </title>
 
     <nav>
         <div class="nav-wrapper blue-grey darken-5">
@@ -123,8 +123,8 @@
 }
 
     if($f==6)
-    {
-        $strSQL = "INSERT INTO product(pid,name,category) VALUES('$pid','$name','$category')";
+    {   echo $f;
+        $strSQL = "INSERT INTO product (PID,NAME,CATEGORY,UNITSM,COST,PRODUCTIONCOST) VALUES('$pid','$name','$category','$unit','$price','$prod')";
         $q=mysql_query($strSQL);
     }
 

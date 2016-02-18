@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
        $nameErr = "Only letters and white space allowed"; 
      }
        else
-           $f++;
+           $f++; 
    }
    
    if (empty($_POST["email"])) {
@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
        $emailErr = "Invalid email format"; 
      }
        else
-           $f++;
+           $f++; 
    }
     
     
@@ -68,21 +68,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      $addressErr = "Address is required";
    } else {
      $address = test_input($_POST["address"]);
-      $f++;
+      $f++; 
    }
     
    if (empty($_POST["dob"])) {
      $dobErr = "Date of Birth is required";
    } else {
      $dob = test_input($_POST["dob"]);
-       $f++;
+       $f++; 
    }
     
     if (empty($_POST["tel"])) {
      $telErr = "Phone Number is required";
    } else {
      $tel = test_input($_POST["tel"]);
-        $f++;
+        $f++; 
    }
      
   if (empty($_POST["password"])) {
@@ -104,14 +104,16 @@ function test_input($data) {
    $data = htmlspecialchars($data);
    return $data;
 }
+    
 
     if($f==6)
-    {
-        $strSQL = "INSERT INTO login(username,email,password) VALUES('$name','$email','$password')";
+    {   
+        $strSQL = "INSERT INTO user (NAME,ADDRESS,DOB,EMAIL,PHONE,PASSWORD) VALUES('$name','$address','$dob','$email','$tel','$password')";
         $q=mysql_query($strSQL);
+        echo $q."fbgfb" ;
     }
 
-	
+ echo $q;	
 if($q)
 {
  header ('location: login.html');
