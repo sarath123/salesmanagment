@@ -4,24 +4,24 @@
 <head>
     <meta charset="UTF-8">
 
-   <link rel="stylesheet" href="css/global.css">
-        <link rel="stylesheet" href="css/materialize.css">
-        <link rel="stylesheet" href="css/materialize.min.css">
-        
-        <script src="js/materialize.js"></script>
-        <script src="js/materialize.min.js"></script>
-    
-        <link rel="stylesheet" href="font/material-design-icons">
-        <link rel="stylesheet" href="font/roboto">
-    
-     <nav>
-    <div class="nav-wrapper teal ">
-      <a href="#" class="brand-logo">Sales Management System</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="help.html">Help</a></li>
-        </ul>
-    </div>
-  </nav>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/materialize.css">
+    <link rel="stylesheet" href="css/materialize.min.css">
+
+    <script src="js/materialize.js"></script>
+    <script src="js/materialize.min.js"></script>
+
+    <link rel="stylesheet" href="font/material-design-icons">
+    <link rel="stylesheet" href="font/roboto">
+
+    <nav>
+        <div class="nav-wrapper teal ">
+            <a href="#" class="brand-logo">Sales Management System</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="help.html">Help</a></li>
+            </ul>
+        </div>
+    </nav>
 
 
 
@@ -43,8 +43,9 @@ require 'config.php';
 
 // define variables and set to empty values
 $nameErr = $emailErr = $addressErr = $passwordErr = $dobErr = $telErr = "";
-$name = $email = $address = $password = $dob = $tel = $sex = "";
+$name = $email = $address = $password = $dob = $tel = $sex =$date = "";
     $f = $q =0;
+   
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
    if (empty($_POST["name"])) {
@@ -103,7 +104,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      $password = test_input($_POST["password"]);
       $f++;
    } 
-
+    
+     
+    
+    $sex=test_input($_POST["radio-category"]);
+    $date=date("Y-m-d");
 }
 
 function test_input($data) {
@@ -116,12 +121,12 @@ function test_input($data) {
 
     if($f==6)
     {   
-        $strSQL = "INSERT INTO user (NAME,ADDRESS,DOB,EMAIL,PHONE,PASSWORD) VALUES('$name','$address','$dob','$email','$tel','$password')";
+        $strSQL = "INSERT INTO user (NAME,ADDRESS,DOB,EMAIL,PHONE,PASSWORD,SEX,JOINDATE) VALUES('$name','$address','$dob','$email','$tel','$password','$sex','$date')";
         $q=mysql_query($strSQL);
-        echo $q."fbgfb" ;
+         
     }
 
- echo $q;	
+ 	
 if($q)
 {
  header ('location: login.html');
@@ -150,10 +155,10 @@ if($q)
                         <fieldset style="border:0px">
                             <legend>Sex</legend>
 
-                            <input class="radio-input" type="radio" id="radio1" name="radio-category" checked/>
+                            <input class="radio-input" type="radio" id="radio1" name="radio-category" value="Male" checked />
                             <label class="radio-label" for="radio1">Male</label>
 
-                            <input class="radio-input" type="radio" id="radio2" name="radio-category" />
+                            <input class="radio-input" type="radio" id="radio2" name="radio-category" value="Female" />
                             <label class="radio-label" for="radio2">Female</label>
 
                         </fieldset>
