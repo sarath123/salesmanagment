@@ -106,7 +106,7 @@
               $query=mysql_query($strSQL);
         
               if(mysql_num_rows($query)==0)
-              { echo "<p> Search value not found !!</p>";
+              { echo "<script>Materialize.toast( 'Search value not found !!', 3000, 'rounded')</script>";
               }
               else
               {
@@ -117,8 +117,8 @@
                       $date = $runrows['JOINDATE'];
                       $email = $runrows['EMAIL'];
                       $c++;
-                      echo "  <div class=\"collection\">
-                      <a href=\"#modal1?email=$email\"   class=\"collection-item  btn modal-trigger\" data-target=\"modal1\" >$name $sex $date $email</a> </div>";
+                      echo " <div class=\"collection\">
+                      <a href=\"#modal1\"   class=\"collection-item  btn modal-trigger\" data-target=\"modal1\" name=\"record$c\" onclick=\" return myFunction('$name')\" value=\"$name\" > $name $sex $date $email </a> </div>";
                   }
               }
      
@@ -145,29 +145,31 @@
                 <!-- Modal Structure -->
                 <div id="modal1" class="modal modal-fixed-footer">
                     <div class="modal-content">
-                        <h4>Modal Header</h4>
+                        <h4>Deleter User</h4>
                         <p>
-                            <?php echo "$name $sex $date $email"; 
-                              echo " <input type=\"hidden\" name=\"name\" value=\"$name\"> "; 
+                            <?php 
+                              echo ' <input type="text" id="user" name="name" value=""> '; 
                               echo '<input type="hidden" name="ready" value="yes">';
                                 ?>
                         </p>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" href="#!" id="delete" class="modal-action modal-close waves-effect waves-green btn-flat ">Remove</button>
+                        <button type="submit" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Remove</button>
+
+
                     </div>
                 </div>
             </form>
 
 
-
+            <div id="exit"></div>
 
 
 
 
             <?php 
                          if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["ready"]) ) 
-                         {
+                         {  
                               if($_GET["ready"]=="yes")
                               {
                               $search=$_GET["name"];
@@ -188,8 +190,10 @@
                              
                              
                             
-                             $sql = "DELETE FROM user WHERE NAME= '$name' AND EMAIL='$email'"; 
+                             $sql = "DELETE FROM user WHERE NAME= '$name' "; 
                              $retval = mysql_query( $sql); 
+                            echo " <script>Materialize.toast( '$name Removed', 3000, 'rounded')</script> "; 
+                             
                              mysql_close();
   
                              }
@@ -198,6 +202,14 @@
                  ?>
 
 
+
+
+                <script type="text/javascript">
+                    function myFunction(namepassed) {
+                        document.getElementById('user').value = namepassed;
+                        return true;
+                    }
+                </script>
 
 
 
