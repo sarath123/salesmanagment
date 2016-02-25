@@ -1,0 +1,74 @@
+<html>
+  <head>
+      
+      
+       <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/materialize.css">
+        <link rel="stylesheet" href="css/materialize.min.css">
+        
+        <script src="js/materialize.js"></script>
+        <script src="js/materialize.min.js"></script>
+    
+        <link rel="stylesheet" href="font/material-design-icons">
+        <link rel="stylesheet" href="font/roboto">
+    
+    
+    <nav>
+    <div class="nav-wrapper teal ">
+      <a id="lol" href="#" >Sales Management System</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="help.html">Help</a></li>
+        </ul>
+    </div>
+  </nav>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+    
+        
+        
+        
+        // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Laptops', 22],
+          ['Mobiles', 35],
+          ['Tablets', 25],
+          ['Headset', 20],
+        ]);
+        
+        
+         // Set chart options
+        var options = {'title':'Sales on January',
+                       'width':800,
+                       'height':600};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+
+  <body>
+    
+    
+  </nav>  
+    <!--Div that will hold the pie chart-->
+    <div id="chart_div"></div>
+  </body>
+</html>
