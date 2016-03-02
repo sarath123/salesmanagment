@@ -78,7 +78,7 @@
                         <input type="text" name="search" placeholder="Search Value ">
                         <span class="error"><?php echo $searchErr;?></span>
                         <?php echo '<input type="hidden" name="submitted" value="yes">'; ?>
-                            <button class="btn waves-effect waves-light" type="submit" value="Search">Submit
+                            <button class="btn waves-effect waves-light" type="submit" value="Search">Search
                                 <i class="material-icons right"></i>
                             </button>
                     </div>
