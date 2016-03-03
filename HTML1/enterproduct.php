@@ -4,24 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/global.css">
-    <title></title>
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+    <link rel="stylesheet" href="css/materialize.css">
+    <link rel="stylesheet" href="css/materialize.min.css">
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-    <title> Enter Product Details </title>
+    <script src="js/materialize.js"></script>
+    <script src="js/materialize.min.js"></script>
+
+    <link rel="stylesheet" href="font/material-design-icons">
+    <link rel="stylesheet" href="font/roboto">
 
     <nav>
-        <div class="nav-wrapper blue-grey darken-5">
+        <div class="nav-wrapper teal " id="lol">
             <a href="#" class="brand-logo">Sales Management System</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="help.html">Help</a></li>
             </ul>
         </div>
     </nav>
-
 
     <style>
         .error {
@@ -149,42 +148,74 @@ if($q)
                     <fieldset>
                         <legend>
                             <h6>Enter product details</h6></legend>
-                        <div class="col s6 offset-s4">
-                            <input type="number_format" name="pid" placeholder="Product ID" value="<?php echo $pid;?>">
-                            <span class="error">* <?php echo $pidErr;?></span>
+                        <div class="row">
+                            <div class="col s5">&nbsp;</div>
+                            <div class="col s2">
+                                <input type="text" name="pid" placeholder="Product ID" value="<?php echo $pid;?>">
+                                <span class="error">* <?php echo $pidErr;?></span>
+                            </div>
+                            <div class="col s5">&nbsp;</div>
                         </div>
-                        <br>
-
-                        <div class="col s2 offset-s4">
-                            <input type="text" name="product_Name" placeholder="Product Name" value="<?php echo $name;?>">
-                            <span class="error">* <?php echo $nameErr;?></span>
-                        </div>
-                        <br>
-                        <div class="col s4 offset-s4">
-                            <input type="text" name="category" placeholder="Category" value="<?php echo $category;?>">
-                            <span class="error">* <?php echo $categoryErr;?></span>
-                        </div>
-                        <br>
 
 
-                        <div class="col s6 offset-s4">
-                            <input type="number_format" name="unit_m" placeholder="Unit Manufactured" value="<?php echo $unit;?>">
-                            <span class="error">* <?php echo $unitErr;?></span>
+
+                        <div class="row">
+                            <div class="col s5">&nbsp;</div>
+                            <div class="col s4">
+                                <input type="text" name="product_Name" placeholder="Product Name" value="<?php echo $name;?>">
+                                <span class="error">* <?php echo $nameErr;?></span>
+                            </div>
+                            <div class="col s3">&nbsp;</div>
                         </div>
-                        <br>
-                        <div class="col s4 offset-s4">
-                            <input type="number_format" name="price" placeholder="Market Price" value="<?php echo $price;?>">
-                            <span class="error">* <?php echo $priceErr;?></span>
+
+
+                        <div class="row">
+                            <div class="col s5">&nbsp;</div>
+                            <div class="col s4">
+                                <input type="text" name="category" placeholder="Category" value="<?php echo $category;?>">
+                                <span class="error">* <?php echo $categoryErr;?></span>
+                            </div>
+                            <div class="col s3">&nbsp;</div>
                         </div>
-                        <div class="col s6 offset-s4">
-                            <input type="number_format" name="prod_cost" placeholder="Production Cost" value="<?php echo $prod;?>">
-                            <span class="error">* <?php echo $prodErr;?></span>
+
+                        <div class="row">
+                            <div class="col s5">&nbsp; </div>
+                            <div class="col s2">
+                                <input type="text" name="unit_m" placeholder="Unit Manufactured" value="<?php echo $unit;?>">
+                                <span class="error">* <?php echo $unitErr;?></span>
+                            </div>
+                            <div class="col s5">&nbsp;</div>
                         </div>
-                        <div class="col s8 offset-s6">
-                            <input type="submit" class="btn waves-effect wave-light" value="Login In">
+
+
+
+                        <div class="row">
+                            <div class="col s5">&nbsp; </div>
+                            <div class="col s2">
+                                <input type="text" name="price" placeholder="Market Price" value="<?php echo $price;?>">
+                                <span class="error">* <?php echo $priceErr;?></span>
+                            </div>
+                            <div class="col s5">&nbsp; </div>
                         </div>
-                        <br>
-                        <br>
+
+
+                        <div class="row">
+                            <div class="col s5">&nbsp; </div>
+                            <div class="col s4">
+                                <input type="text" name="prod_cost" placeholder="Production Cost" value="<?php echo $prod;?>">
+                                <span class="error">* <?php echo $prodErr;?></span>
+                            </div>
+                            <div class="col s5">&nbsp; </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col s5">&nbsp; </div>
+                            <div class="col s2">
+                                <input type="submit" class="btn waves-effect wave-light" value="Login In">
+                            </div>
+                            <div class="col s5">&nbsp; </div>
+                        </div>
                     </fieldset>
                 </form>
             </div>

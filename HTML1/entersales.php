@@ -105,23 +105,24 @@
            return $data;
        }
       
-      echo $f;
+     
 
       
        if($f==6)
     {  
-        echo $f;
+        
            
         $strSQL = "INSERT INTO sales (AGENTID,PRODUCTID,UNITSSOLD,CUSADDR,CUSNAME,DATE) VALUES('$agentid','$pid','$unit','$caddr','$cname','$date')";
         $q=mysql_query($strSQL);
     }
 
-	
+	mysql_close();
 if($q )
 {
+ sleep(3);
  header ('location: login.html');
 }
-             mysql_close();
+             
     
     
    
@@ -129,7 +130,7 @@ if($q )
    ?>
 
         <p>
-            <h1>(((((((((((Show sales id (autoincremented value from database))))))))))))</h1>
+            <h6>(((((((((((Show sales id (autoincremented value from database))))))))))))</h6>
 
 
             <form method="POST" action="entersales.php">
@@ -202,7 +203,7 @@ if($q )
                     <div class="row">
                         <div class="col s6">&nbsp;</div>
                         <div class="col s3">
-                            <input type="button" class="btn waves-effect wave-light   collection-item  btn modal-trigger" data-target="modal1" onclick="return myfunction()" value="Done">
+                            <button class="btn waves-effect wave-light   collection-item  btn modal-trigger" data-target="modal1" onclick="return myfunction()">Done</button>
                         </div>
                         <div class="col s3">&nbsp;</div>
                     </div>
@@ -221,25 +222,24 @@ if($q )
         <!-- Modal Structure -->
         <div id="modal1" class="modal modal-fixed-footer">
             <div class="modal-content">
-                <h4>Add Sales Details</h4>
+                <h5>Add Sales Details</h5>
                 <p>Product ID :
-                    <p id="mproductid" value=""> </p>
-                    Agent ID :
-                    <p id="magentid" value=""></p>
-                    Date of Transaction :
-                    <p id="mdate" value=""></p>
-                    Units Sold :
-                    <p id="munits" value=""></p>
-                    Customer Name :
-                    <p id="mcname" value=""></p>
-                    Customer Address :
-                    <p id="mcaddr" value=""></p>
+                    <a id="mproductid" value=""> </a>
+                    <br> Agent ID :
+                    <a id="magentid" value=""></a>
+                    <br> Date of Transaction :
+                    <a id="mdate" value=""></a>
+                    <br> Units Sold :
+                    <a id="munits" value=""></a>
+                    <br> Customer Name :
+                    <a id="mcname" value=""></a>
+                    <br> Customer Address :
+                    <a id="mcaddr" value=""></a>
+                    <br>
                 </p>
-
-
             </div>
             <div class="modal-footer">
-                <input type="submit" class="modal-action modal-close waves-effect waves-green btn-flat " value="ADD">
+                <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat " onclick="Materialize.toast('DONE', 1000)">ADD</button>
 
 
             </div>
