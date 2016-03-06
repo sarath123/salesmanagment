@@ -3,6 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
+
+
+
+    <title>Sales List</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/materialize.css">
     <link rel="stylesheet" href="css/materialize.min.css">
@@ -13,18 +17,16 @@
 
     <link rel="stylesheet" href="font/material-design-icons">
     <link rel="stylesheet" href="font/roboto">
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <nav>
-        <div class="nav-wrapper teal " id="lol">
+        <div class="nav-wrapper teal ">
             <a href="#" class="brand-logo">Sales Management System</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="agntoptions.html">Home</a></li>
                 <li><a href="help.html">Help</a></li>
-
             </ul>
         </div>
     </nav>
-
 
     <style>
         .error {
@@ -38,17 +40,85 @@
 
 <body>
 
+    <?php 
+       require 'config.php';
+    
+       if ($_SERVER["REQUEST_METHOD"] == "GET")
+     {
+    
+    $pid = $agentid = $date = $unit = $cname = $caddr = $salesid =  "";
+    
+  
+             $search=$_GET["sid"];
+
+              $strSQL = "SELECT * FROM sales WHERE SALESID=$search";
+              $query=mysql_query($strSQL);
+   
+              if(mysql_num_rows($query)!=1)
+              { 
+                  echo "<h3>No Transaction Found</h3><p class='center-align'>Redirecting to HOME</p>";
+                  echo '<div class="progress">
+                      <div class="indeterminate"></div>
+                 </div>';
+                  header( "refresh:3;url=agntoptions.html" );
+              }
+              else
+              {
+                  
+                  echo "<div>&nbsp</div>
+                       <table   class=\"highlight container \" >
+                          <tr>
+                            <th>SALES ID</th>
+                            <th>DATE</th>
+                            <th>PRODUCT ID</th>
+                            <th>UNITS SOLD</th>
+                            <th>CUSTOMER NAME</th>
+                            <th>CUSTOMER ADDRESS</th>
+                          </tr>";
+                  
+                  
+                  while($runrows= mysql_fetch_assoc($query))
+                  { 
+                      $date = $runrows['DATE'];
+                      $pid = $runrows['PRODUCTID'];
+                      $unit = $runrows['UNITSSOLD'];
+                      $cname = $runrows['CUSNAME'];
+                      $caddr = $runrows['CUSADDR'];
+                      $salesid = $runrows['SALESID'];
+                     
+                      echo " 
+                      
+                   <tr>
+                        <td name='sid'><a href='login.html'>$salesid</a></td>
+                        <td>$date</td>
+                        <td>$pid</td>
+                        <td>$unit</td>
+                        <td>$cname</td>
+                        <td>$caddr</td>
+                      </tr>
+                       ";
+                  }
+              }
+    
+ 
+               echo " </table>";                             
+                             
+  
+     }
+                 ?>
 
 
-    <?php
 
-    require 'config.php';
+
+
+        <?php
+
+   
 
     // define variables and set to empty values
    $pidErr = $agentidErr = $dateErr = $unitErr = $cnameErr = $caddrErr = "";
-   $pid = $agentid = $date = $unit = $cname = $caddr = "";
+   //$pid = $agentid = $date = $unit = $cname = $caddr = "";
     $f = $q =0;
-    $salesid=0;
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
       
@@ -98,12 +168,7 @@
       
       
       
-        $s = "SELECT * FROM sales";
-              $query=mysql_query($s); 
-            while($runrows= mysql_fetch_assoc($query))
-                  { 
-                      $salesid = $runrows['SALESID'];
-                    }
+        $salesid=$_POST["id"];
     
       }
      
@@ -114,25 +179,26 @@
            return $data;
        }
       
-     
+   
 
+    
       
        if($f==6)
     {  
-        
-$salesid++;
-           
+        $remove="DELETE FROM sales WHERE SALESID=$salesid";
+         $s=mysql_query($remove);  
         $strSQL = "INSERT INTO sales (AGENTID,PRODUCTID,UNITSSOLD,CUSADDR,CUSNAME,DATE,SALESID) VALUES('$agentid','$pid','$unit','$caddr','$cname','$date','$salesid')";
         $q=mysql_query($strSQL);
     }
 
-	
-if($q )
+	mysql_close();
+    
+if($q)
 {
  sleep(3);
  header ('location: login.html');
 }
-             
+   
     
     
    
@@ -140,55 +206,27 @@ if($q )
    ?>
 
 
-        <?php   $s = "SELECT * FROM sales";
-              $quer=mysql_query($s); 
-    
-    if(mysql_num_rows($quer)==0)
-    {
-        echo "<h3>No Transaction Found</h3>";
-    }
-     else
-     {
-            while($runrows = mysql_fetch_assoc($quer))
-                  { 
-                      $salesid = $runrows["SALESID"];
-                    }
-        } 
-    mysql_close();
-    ?>
 
-
-            <form method="POST" action="entersales.php">
+            <form method="POST" action="modifysales2.php">
                 <feildset>
                     <legend>
                         <h6>Enter Sales details</h6></legend>
-
-
-
-
                     <div class="row">
                         <div>
                             <div class="col s5">&nbsp;</div>
                             <div class="col s2">
-                                <input type="text" name="pid" placeholder="Product ID">
+                                <input type="text" name="pid" placeholder="Product ID" value="<?php echo $pid;?>">
                                 <span class="error">* <?php echo $pidErr;?></span>
                             </div>
-
+                            <br>
+                            <div class="col s5">&nbsp;</div>
                         </div>
-
-                        <div>
-                            <div class="col s3 ">&nbsp;</div>
-                            <h5>SALES ID : <?php $salesid++; echo "$salesid"; ?></h5>
-                        </div>
-
                     </div>
-
-
 
                     <div class="row">
                         <div class="col s5">&nbsp;</div>
                         <div class="col s2">
-                            <input type="text" name="agentid" placeholder="Enter agent id ">
+                            <input type="text" name="agentid" placeholder="Enter agent id " value="<?php //echo $agentid;?>">
                             <span class="error">* <?php echo $agentidErr;?></span>
                         </div>
                         <br>
@@ -198,7 +236,7 @@ if($q )
                     <div class="row">
                         <div class="col s5">&nbsp;</div>
                         <div class="col s2">
-                            <input type="date" name="date" placeholder=" ">
+                            <input type="date" name="date" placeholder=" " value="<?php echo $date;?>">
                             <span class="error">* <?php echo $dateErr;?></span>
                         </div>
                         <br>
@@ -209,7 +247,7 @@ if($q )
                     <div class="row">
                         <div class="col s5">&nbsp;</div>
                         <div class="col s3">
-                            <input type="text" name="unitsold" placeholder="Number of units sold">
+                            <input type="text" name="unitsold" placeholder="Number of units sold" value="<?php echo $unit;?>">
                             <span class="error">* <?php echo $unitErr;?></span>
                         </div>
                         <div class="col s3">&nbsp;</div>
@@ -219,7 +257,7 @@ if($q )
                     <div class="row">
                         <div class="col s5">&nbsp;</div>
                         <div class="col s4">
-                            <input type="text" name="cusname" placeholder="customer name">
+                            <input type="text" name="cusname" placeholder="customer name" value="<?php echo $cname;?>">
                             <span class="error">* <?php echo $cnameErr;?></span>
                         </div>
                         <div class="col s3">&nbsp;</div>
@@ -229,11 +267,14 @@ if($q )
                     <div class="row">
                         <div class="col s5">&nbsp;</div>
                         <div class="col s4">
-                            <input type="text" name="cusaddr" placeholder="customer address">
+                            <input type="text" name="cusaddr" placeholder="customer address" value="<?php echo $caddr;?>">
                             <span class="error">* <?php echo $caddrErr;?></span>
                         </div>
                         <div class="col s3">&nbsp;</div>
                     </div>
+
+
+                    <input type="hidden" name="id" value="<?php echo $salesid;?>">
 
 
                     <div class="row">
@@ -313,6 +354,12 @@ if($q )
                     $('.modal-trigger').leanModal();
                 });
             </script>
+
+
+
+
+
+
 </body>
 
 </html>

@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" href="font/material-design-icons">
     <link rel="stylesheet" href="font/roboto">
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <nav>
         <div class="nav-wrapper teal ">
             <a href="#" class="brand-logo">Sales Management System</a>
@@ -33,6 +33,21 @@
 </head>
 
 <body>
+
+
+
+    <div class="container row">
+        <form>
+            <div class="input-field col s4 offset-s3">
+                <input id="search" type="search" required>
+                <label for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+            </div>
+
+        </form>
+    </div>
+
+
 
 
     <?php 
@@ -60,7 +75,9 @@
               {
                   
                   echo "<div>&nbsp</div>
-                       <table border='0'  class=\"striped  container\" >
+                  <form action='modifysales2.php' method='GET'>
+                       <table   class=\"highlight container \" >
+                       <select name='sid'>
                           <tr>
                             <th>SALES ID</th>
                             <th>DATE</th>
@@ -81,27 +98,25 @@
                       $salesid = $runrows['SALESID'];
                      
                       echo " 
-                      
-                      <tr>
-                        <td>$salesid</td>
+                      <option>
+                   <tr>
+                        <td><a href='modifysales2.php?sid=$salesid'>$salesid</a></td>
                         <td>$date</td>
                         <td>$pid</td>
                         <td>$unit</td>
                         <td>$cname</td>
                         <td>$caddr</td>
-                      </tr>
+                      </tr></option>
                        ";
                   }
               }
     
  
-               echo " </table>";                             
+               echo " </table></select></form>";                             
                              mysql_close();
   
                        
                  ?>
-
-
 
 
 
