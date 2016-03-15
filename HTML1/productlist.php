@@ -16,47 +16,47 @@ if($_SESSION['cat']=="agent")
 
 
 
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+    <html>
 
-<head>
-    <meta charset="UTF-8">
-
-
-
-    <title>Product List</title>
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/materialize.css">
-    <link rel="stylesheet" href="css/materialize.min.css">
-
-    <script src="js/materialize.js"></script>
-    <script src="js/materialize.min.js"></script>
-
-    <link rel="stylesheet" href="font/material-design-icons">
-    <link rel="stylesheet" href="font/roboto">
-
-    <nav>
-        <div class="nav-wrapper teal ">
-            <a href="#" class="brand-logo">Sales Management System</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="manager.php">Home</a></li>
-                <li><a href="help.html">Help</a></li>
-                <li><a href="logout.php">Log Out</a></li>
-            </ul>
-        </div>
-    </nav>
+    <head>
+        <meta charset="UTF-8">
 
 
 
+        <title>Product List</title>
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/materialize.css">
+        <link rel="stylesheet" href="css/materialize.min.css">
 
-</head>
+        <script src="js/materialize.js"></script>
+        <script src="js/materialize.min.js"></script>
 
-<body>
+        <link rel="stylesheet" href="font/material-design-icons">
+        <link rel="stylesheet" href="font/roboto">
+
+        <nav>
+            <div class="nav-wrapper teal ">
+                <a href="#" class="brand-logo">Sales Management System</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="manager.php">Home</a></li>
+                    <li><a href="help.html">Help</a></li>
+                    <li><a href="logout.php">Log Out</a></li>
+                </ul>
+            </div>
+        </nav>
 
 
-    <?php 
+
+
+    </head>
+
+    <body>
+
+
+        <?php 
        require 'config.php';
-    
+    echo $_SESSION['email'] ;
     $name = $pid =  $unitsm =  $category = $cost = $stock = $productioncost = "";
     
 
@@ -127,6 +127,6 @@ if($_SESSION['cat']=="agent")
 
 
 
-</body>
+    </body>
 
-</html>
+    </html>

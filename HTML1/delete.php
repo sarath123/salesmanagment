@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 if(!isset($_SESSION['email']))
@@ -17,51 +16,51 @@ if($_SESSION['cat']=="agent")
 
 
 
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+    <html>
 
-<head>
-    <meta charset="UTF-8">
+    <head>
+        <meta charset="UTF-8">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-    <title>Detele agent</title>
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/materialize.css">
-    <link rel="stylesheet" href="css/materialize.min.css">
+        <title>Detele agent</title>
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/materialize.css">
+        <link rel="stylesheet" href="css/materialize.min.css">
 
-    <script src="js/materialize.js"></script>
-    <script src="js/materialize.min.js"></script>
+        <script src="js/materialize.js"></script>
+        <script src="js/materialize.min.js"></script>
 
-    <link rel="stylesheet" href="font/material-design-icons">
-    <link rel="stylesheet" href="font/roboto">
+        <link rel="stylesheet" href="font/material-design-icons">
+        <link rel="stylesheet" href="font/roboto">
 
-    <nav>
-        <div class="nav-wrapper teal ">
-            <a href="#" class="brand-logo">Sales Management System</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="manager.php">Home</a></li>
-                <li><a href="help.html">Help</a></li>
-                <li><a href="logout.php">Log Out</a></li>
-            </ul>
-        </div>
-    </nav>
-
-
-    <style>
-        .error {
-            color: #FF0000;
-        }
-    </style>
+        <nav>
+            <div class="nav-wrapper teal ">
+                <a href="#" class="brand-logo">Sales Management System</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="manager.php">Home</a></li>
+                    <li><a href="help.html">Help</a></li>
+                    <li><a href="logout.php">Log Out</a></li>
+                </ul>
+            </div>
+        </nav>
 
 
+        <style>
+            .error {
+                color: #FF0000;
+            }
+        </style>
 
-</head>
-
-<body>
 
 
-    <?php 
+    </head>
+
+    <body>
+
+
+        <?php 
        require 'config.php';
     
     $name = $sex =  $date =  $email = "";
@@ -90,40 +89,42 @@ if($_SESSION['cat']=="agent")
 
 
 
-        <input type="hidden" name="ready" value="no">
+            <input type="hidden" name="ready" value="no">
 
-        <form action="" method="POST">
-            <div class="container">
-                <div class="row">
-                    <div class="col s5 offset-s3">
-                        <input type="text" name="search" placeholder="Search Value ">
-                        <span class="error"><?php echo $searchErr;?></span>
-                        <?php echo '<input type="hidden" name="submitted" value="yes">'; ?>
-                            <button class="btn waves-effect waves-light" type="submit" value="Search">Search
-                                <i class="material-icons right"></i>
-                            </button>
+            <form action="" method="POST">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s5 offset-s3">
+                            <input type="text" name="search" placeholder="Search Value ">
+                            <span class="error"><?php echo $searchErr;?></span>
+                            <?php echo '<input type="hidden" name="submitted" value="yes">'; ?>
+                                <button class="btn waves-effect waves-light" type="submit" value="Search">Search
+                                    <i class="material-icons right"></i>
+                                </button>
+                        </div>
                     </div>
                 </div>
+
+            </form>
+            <div id="result">
+
             </div>
 
-        </form>
-        <div id="result">
-
-        </div>
 
 
 
 
 
 
-
-        <?php
+            <?php
 
   
       
           if( $f==1)
           {
-              $strSQL = "SELECT * FROM user WHERE NAME LIKE '%$search%'";
+              $location = $_SESSION["location"];
+              $id = $_SESSION["manageridvalue"];
+              $strSQL = "SELECT * FROM user WHERE NAME LIKE '%$search%' and LOCATION='$location' and ID<>$id";
               $query=mysql_query($strSQL);
         
               if(mysql_num_rows($query)==0)
@@ -162,33 +163,33 @@ if($_SESSION['cat']=="agent")
 
 
 
-            <form method="get">
-                <!-- Modal Structure -->
-                <div id="modal1" class="modal modal-fixed-footer">
-                    <div class="modal-content">
-                        <h4>Deleter User</h4>
-                        <p>
-                            <?php 
+                <form method="get">
+                    <!-- Modal Structure -->
+                    <div id="modal1" class="modal modal-fixed-footer">
+                        <div class="modal-content">
+                            <h4>Deleter User</h4>
+                            <p>
+                                <?php 
                               echo ' <input type="text" id="user" name="name" value=""> '; 
                               echo '<input type="hidden" name="ready" value="yes">';
                                 ?>
-                        </p>
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Remove</button>
+
+
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Remove</button>
+                </form>
 
 
-                    </div>
-                </div>
-            </form>
-
-
-            <div id="exit"></div>
+                <div id="exit"></div>
 
 
 
 
-            <?php 
+                <?php 
                          if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["ready"]) ) 
                          {  
                               if($_GET["ready"]=="yes")
@@ -225,25 +226,25 @@ if($_SESSION['cat']=="agent")
 
 
 
-                <script type="text/javascript">
-                    function myFunction(namepassed) {
-                        document.getElementById('user').value = namepassed;
-                        return true;
-                    }
-                </script>
+                    <script type="text/javascript">
+                        function myFunction(namepassed) {
+                            document.getElementById('user').value = namepassed;
+                            return true;
+                        }
+                    </script>
 
 
 
 
 
 
-                <script type="text/javascript">
-                    $(document).ready(function () {
-                        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-                        $('.modal-trigger').leanModal();
-                    });
-                </script>
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+                            $('.modal-trigger').leanModal();
+                        });
+                    </script>
 
-</body>
+    </body>
 
-</html>
+    </html>

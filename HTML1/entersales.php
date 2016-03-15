@@ -4,57 +4,57 @@ if(!isset($_SESSION['email']))
 {
     header("Location:login.php");
 }
-if($_SESSION['cat']=="agent")
+if($_SESSION['cat']=="manager")
 {
-    header ('Location:agntoptions.php');
+    header ('Location:login.php');
 }
 ?>
 
 
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+    <html>
 
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/materialize.css">
-    <link rel="stylesheet" href="css/materialize.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/materialize.css">
+        <link rel="stylesheet" href="css/materialize.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-    <script src="js/materialize.js"></script>
-    <script src="js/materialize.min.js"></script>
+        <script src="js/materialize.js"></script>
+        <script src="js/materialize.min.js"></script>
 
-    <link rel="stylesheet" href="font/material-design-icons">
-    <link rel="stylesheet" href="font/roboto">
+        <link rel="stylesheet" href="font/material-design-icons">
+        <link rel="stylesheet" href="font/roboto">
 
-    <nav>
-        <div class="nav-wrapper teal " id="lol">
-            <a href="#" class="brand-logo">Sales Management System</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="agntoptions.php">Home</a></li>
-                <li><a href="help.html">Help</a></li>
-                <li><a href="logout.php">Log Out</a></li>
+        <nav>
+            <div class="nav-wrapper teal " id="lol">
+                <a href="#" class="brand-logo">Sales Management System</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="agntoptions.php">Home</a></li>
+                    <li><a href="help.html">Help</a></li>
+                    <li><a href="logout.php">Log Out</a></li>
 
-            </ul>
-        </div>
-    </nav>
-
-
-    <style>
-        .error {
-            color: #FF0000;
-        }
-    </style>
+                </ul>
+            </div>
+        </nav>
 
 
-
-</head>
-
-<body>
+        <style>
+            .error {
+                color: #FF0000;
+            }
+        </style>
 
 
 
-    <?php
+    </head>
+
+    <body>
+
+
+
+        <?php
 
     require 'config.php';
 
@@ -144,7 +144,7 @@ $salesid++;
 if($q )
 {
  sleep(3);
- header ('location: login.html');
+ header ('location: agntoptions.php');
 }
              
     
@@ -154,7 +154,7 @@ if($q )
    ?>
 
 
-        <?php   $s = "SELECT * FROM sales";
+            <?php   $s = "SELECT * FROM sales";
               $quer=mysql_query($s); 
     
     if(mysql_num_rows($quer)==0)
@@ -172,161 +172,161 @@ if($q )
     ?>
 
 
-            <form method="POST" action="entersales.php">
-                <feildset>
-                    <legend>
-                        <h6>Enter Sales details</h6></legend>
+                <form method="POST" action="entersales.php">
+                    <feildset>
+                        <legend>
+                            <h6>Enter Sales details</h6></legend>
 
 
 
 
-                    <div class="row">
-                        <div>
-                            <div class="col s5">&nbsp;</div>
-                            <div class="col s2">
-                                <input type="text" name="pid" placeholder="Product ID">
-                                <span class="error">* <?php echo $pidErr;?></span>
+                        <div class="row">
+                            <div>
+                                <div class="col s5">&nbsp;</div>
+                                <div class="col s2">
+                                    <input type="text" name="pid" placeholder="Product ID">
+                                    <span class="error">* <?php echo $pidErr;?></span>
+                                </div>
+
+                            </div>
+
+                            <div>
+                                <div class="col s3 ">&nbsp;</div>
+                                <h5>SALES ID : <?php $salesid++; echo "$salesid"; ?></h5>
                             </div>
 
                         </div>
 
-                        <div>
-                            <div class="col s3 ">&nbsp;</div>
-                            <h5>SALES ID : <?php $salesid++; echo "$salesid"; ?></h5>
-                        </div>
-
-                    </div>
 
 
-
-                    <div class="row">
-                        <div class="col s5">&nbsp;</div>
-                        <div class="col s2">
-                            <input type="text" name="agentid" placeholder="Enter agent id ">
-                            <span class="error">* <?php echo $agentidErr;?></span>
-                        </div>
-                        <br>
-                        <div class="col s5">&nbsp;</div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col s5">&nbsp;</div>
-                        <div class="col s2">
-                            <input type="date" name="date" placeholder=" ">
-                            <span class="error">* <?php echo $dateErr;?></span>
-                        </div>
-                        <br>
-                        <div class="col s5">&nbsp;</div>
-                    </div>
-
-
-                    <div class="row">
-                        <div class="col s5">&nbsp;</div>
-                        <div class="col s3">
-                            <input type="text" name="unitsold" placeholder="Number of units sold">
-                            <span class="error">* <?php echo $unitErr;?></span>
-                        </div>
-                        <div class="col s3">&nbsp;</div>
-                    </div>
-
-
-                    <div class="row">
-                        <div class="col s5">&nbsp;</div>
-                        <div class="col s4">
-                            <input type="text" name="cusname" placeholder="customer name">
-                            <span class="error">* <?php echo $cnameErr;?></span>
-                        </div>
-                        <div class="col s3">&nbsp;</div>
-                    </div>
-
-
-                    <div class="row">
-                        <div class="col s5">&nbsp;</div>
-                        <div class="col s4">
-                            <input type="text" name="cusaddr" placeholder="customer address">
-                            <span class="error">* <?php echo $caddrErr;?></span>
-                        </div>
-                        <div class="col s3">&nbsp;</div>
-                    </div>
-
-
-                    <div class="row">
-                        <div class="col s6">&nbsp;</div>
-                        <div class="col s3">
-                            <button class="btn waves-effect wave-light   collection-item  btn modal-trigger" data-target="modal1" onclick="return myfunction()">Done</button>
-                        </div>
-                        <div class="col s3">&nbsp;</div>
-                    </div>
-
-
-                </feildset>
-
-                </div>
-
-
-
-
-
-
-                <!-- Modal Structure -->
-                <div id="modal1" class="modal modal-fixed-footer">
-                    <div class="modal-content">
-                        <h5>Add Sales Details</h5>
-                        <p>Product ID :
-                            <a id="mproductid" value=""> </a>
-                            <br> Agent ID :
-                            <a id="magentid" value=""></a>
-                            <br> Date of Transaction :
-                            <a id="mdate" value=""></a>
-                            <br> Units Sold :
-                            <a id="munits" value=""></a>
-                            <br> Customer Name :
-                            <a id="mcname" value=""></a>
-                            <br> Customer Address :
-                            <a id="mcaddr" value=""></a>
+                        <div class="row">
+                            <div class="col s5">&nbsp;</div>
+                            <div class="col s2">
+                                <input type="text" name="agentid" value="<?php echo $_SESSION['agentidvalue']; ?>" hidden>
+                                <!-- <span class="error">* <?php echo $agentidErr;?></span> -->
+                            </div>
                             <br>
-                        </p>
+                            <div class="col s5">&nbsp;</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col s5">&nbsp;</div>
+                            <div class="col s2">
+                                <input type="date" name="date" placeholder=" ">
+                                <span class="error">* <?php echo $dateErr;?></span>
+                            </div>
+                            <br>
+                            <div class="col s5">&nbsp;</div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col s5">&nbsp;</div>
+                            <div class="col s3">
+                                <input type="text" name="unitsold" placeholder="Number of units sold">
+                                <span class="error">* <?php echo $unitErr;?></span>
+                            </div>
+                            <div class="col s3">&nbsp;</div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col s5">&nbsp;</div>
+                            <div class="col s4">
+                                <input type="text" name="cusname" placeholder="customer name">
+                                <span class="error">* <?php echo $cnameErr;?></span>
+                            </div>
+                            <div class="col s3">&nbsp;</div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col s5">&nbsp;</div>
+                            <div class="col s4">
+                                <input type="text" name="cusaddr" placeholder="customer address">
+                                <span class="error">* <?php echo $caddrErr;?></span>
+                            </div>
+                            <div class="col s3">&nbsp;</div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col s6">&nbsp;</div>
+                            <div class="col s3">
+                                <button class="btn waves-effect wave-light   collection-item  btn modal-trigger" data-target="modal1" onclick="return myfunction()">Done</button>
+                            </div>
+                            <div class="col s3">&nbsp;</div>
+                        </div>
+
+
+                    </feildset>
+
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat " onclick="Materialize.toast('DONE', 1000)">ADD</button>
 
 
+
+
+
+
+                    <!-- Modal Structure -->
+                    <div id="modal1" class="modal modal-fixed-footer">
+                        <div class="modal-content">
+                            <h5>Add Sales Details</h5>
+                            <p>Product ID :
+                                <a id="mproductid" value=""> </a>
+                                <br> Agent ID :
+                                <a id="magentid" value=""></a>
+                                <br> Date of Transaction :
+                                <a id="mdate" value=""></a>
+                                <br> Units Sold :
+                                <a id="munits" value=""></a>
+                                <br> Customer Name :
+                                <a id="mcname" value=""></a>
+                                <br> Customer Address :
+                                <a id="mcaddr" value=""></a>
+                                <br>
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat " onclick="Materialize.toast('DONE', 1000)">ADD</button>
+
+
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
 
 
 
 
-            <script type="text/javascript">
-                function myfunction() {
-                    var jagentid = document.getElementsByName("agentid")[0].value;
-                    var jpid = document.getElementsByName("pid")[0].value;
-                    var jdate = document.getElementsByName("date")[0].value;
-                    var junitsold = document.getElementsByName("unitsold")[0].value;
-                    var jcusname = document.getElementsByName("cusname")[0].value;
-                    var jcusaddr = document.getElementsByName("cusaddr")[0].value;
+                <script type="text/javascript">
+                    function myfunction() {
+                        var jagentid = document.getElementsByName("agentid")[0].value;
+                        var jpid = document.getElementsByName("pid")[0].value;
+                        var jdate = document.getElementsByName("date")[0].value;
+                        var junitsold = document.getElementsByName("unitsold")[0].value;
+                        var jcusname = document.getElementsByName("cusname")[0].value;
+                        var jcusaddr = document.getElementsByName("cusaddr")[0].value;
 
-                    document.getElementById("magentid").innerHTML = jagentid;
-                    document.getElementById("mproductid").innerHTML = jpid;
-                    document.getElementById("mdate").innerHTML = jdate;
-                    document.getElementById("munits").innerHTML = junitsold;
-                    document.getElementById("mcname").innerHTML = jcusname;
-                    document.getElementById("mcaddr").innerHTML = jcusaddr;
+                        document.getElementById("magentid").innerHTML = jagentid;
+                        document.getElementById("mproductid").innerHTML = jpid;
+                        document.getElementById("mdate").innerHTML = jdate;
+                        document.getElementById("munits").innerHTML = junitsold;
+                        document.getElementById("mcname").innerHTML = jcusname;
+                        document.getElementById("mcaddr").innerHTML = jcusaddr;
 
-                }
-            </script>
-
-
+                    }
+                </script>
 
 
 
-            <script type="text/javascript">
-                $(document).ready(function () {
-                    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-                    $('.modal-trigger').leanModal();
-                });
-            </script>
-</body>
 
-</html>
+
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+                        $('.modal-trigger').leanModal();
+                    });
+                </script>
+    </body>
+
+    </html>

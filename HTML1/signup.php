@@ -18,48 +18,48 @@ if($_SESSION['cat']=="agent")
 
 
 
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+    <html>
 
-<head>
-    <meta charset="UTF-8">
+    <head>
+        <meta charset="UTF-8">
 
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/materialize.css">
-    <link rel="stylesheet" href="css/materialize.min.css">
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/materialize.css">
+        <link rel="stylesheet" href="css/materialize.min.css">
 
-    <script src="js/materialize.js"></script>
-    <script src="js/materialize.min.js"></script>
+        <script src="js/materialize.js"></script>
+        <script src="js/materialize.min.js"></script>
 
-    <link rel="stylesheet" href="font/material-design-icons">
-    <link rel="stylesheet" href="font/roboto">
+        <link rel="stylesheet" href="font/material-design-icons">
+        <link rel="stylesheet" href="font/roboto">
 
-    <nav>
-        <div class="nav-wrapper teal ">
-            <a href="#" class="brand-logo">Sales Management System</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="manager.php">Home</a></li>
-                <li><a href="help.html">Help</a></li>
-                <li><a href="logout.php">Log Out</a></li>
-            </ul>
-        </div>
-    </nav>
-
-
-
-    <style>
-        .error {
-            color: #FF0000;
-        }
-    </style>
-
-</head>
+        <nav>
+            <div class="nav-wrapper teal ">
+                <a href="#" class="brand-logo">Sales Management System</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="manager.php">Home</a></li>
+                    <li><a href="help.html">Help</a></li>
+                    <li><a href="logout.php">Log Out</a></li>
+                </ul>
+            </div>
+        </nav>
 
 
-<body>
+
+        <style>
+            .error {
+                color: #FF0000;
+            }
+        </style>
+
+    </head>
 
 
-    <?php
+    <body>
+
+
+        <?php
 
 require 'config.php';
 
@@ -69,6 +69,10 @@ $name = $email = $address = $password = $dob = $tel = $sex =$date = "";
     $f = $q =0;
    
 
+        
+     
+        
+        
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
    if (empty($_POST["name"])) {
      $nameErr = "Name is required";
@@ -143,7 +147,12 @@ function test_input($data) {
 
     if($f==6)
     {   
-        $strSQL = "INSERT INTO user (NAME,ADDRESS,DOB,EMAIL,PHONE,PASSWORD,SEX,JOINDATE) VALUES('$name','$address','$dob','$email','$tel','$password','$sex','$date')";
+        
+          
+       
+        $location =  $_SESSION["location"];
+       
+ $strSQL = "INSERT INTO user (NAME,ADDRESS,DOB,EMAIL,PHONE,PASSWORD,SEX,JOINDATE,POSITION,LOCATION) VALUES('$name','$address','$dob','$email','$tel','$password','$sex','$date','agent','$location')";
         $q=mysql_query($strSQL);
          
     }
@@ -151,77 +160,77 @@ function test_input($data) {
  	
 if($q)
 {
- header ('location: login.html');
+ header ('location: manager.php');
 }
              mysql_close();
 
 ?>
 
-        <p>
+            <p>
 
-            <div class="row">
-                <form name="sign" method="post" action="signup.php">
-                    <fieldset style="border:0px;">
-                        <legend>
-                            <h6 style="margin:100px;">Enter your details</h6></legend>
-                        <div class="col s2 offset-s4">
-                            <input type="text" name="name" placeholder="Name" value="<?php echo $name;?>"> <span class="error">* <?php echo $nameErr;?></span>
+                <div class="row">
+                    <form name="sign" method="post" action="signup.php">
+                        <fieldset style="border:0px;">
+                            <legend>
+                                <h6 style="margin:100px;">Enter your details</h6></legend>
+                            <div class="col s2 offset-s4">
+                                <input type="text" name="name" placeholder="Name" value="<?php echo $name;?>"> <span class="error">* <?php echo $nameErr;?></span>
 
-                        </div>
-                        <br>
-                        <div class="col s4 offset-s4">
-                            <input type="email" name="email" placeholder="email" pattern="[a-zA-Z0-9]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,}" value="<?php echo $email;?>">
-                            <span class="error">* <?php echo $emailErr;?></span>
-                        </div>
-                        <br>
-                        <fieldset style="border:0px">
-                            <legend>Sex</legend>
+                            </div>
+                            <br>
+                            <div class="col s4 offset-s4">
+                                <input type="email" name="email" placeholder="email" pattern="[a-zA-Z0-9]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,}" value="<?php echo $email;?>">
+                                <span class="error">* <?php echo $emailErr;?></span>
+                            </div>
+                            <br>
+                            <fieldset style="border:0px">
+                                <legend>Sex</legend>
 
-                            <input class="radio-input" type="radio" id="radio1" name="radio-category" value="Male" checked />
-                            <label class="radio-label" for="radio1">Male</label>
+                                <input class="radio-input" type="radio" id="radio1" name="radio-category" value="Male" checked />
+                                <label class="radio-label" for="radio1">Male</label>
 
-                            <input class="radio-input" type="radio" id="radio2" name="radio-category" value="Female" />
-                            <label class="radio-label" for="radio2">Female</label>
+                                <input class="radio-input" type="radio" id="radio2" name="radio-category" value="Female" />
+                                <label class="radio-label" for="radio2">Female</label>
 
+                            </fieldset>
+
+
+
+                            <div class="col s6 offset-s4">
+                                <input type="text" name="address" placeholder="address" value="<?php echo $address;?>">
+                                <span class="error">* <?php echo $addressErr;?></span>
+                            </div>
+                            <br>
+                            <div class="col s2 offset-s4">
+                                <input type="date" name="dob" placeholder="Date Of Birth" value="<?php echo $dob;?>">
+                                <span class="error">* <?php echo $dobErr;?></span>
+                            </div>
+                            <div class="col s4 offset-s4">
+                                <input type="text" name="tel" placeholder="Telephone number" pattern="[0-9]{10,10}" value="<?php echo $tel;?>">
+                                <span class="error">* <?php echo $telErr;?></span>
+                            </div>
+                            <div class="col s6 offset-s4">
+                                <input type="password" name="password" placeholder="Password" value="<?php echo $password;?>">
+                                <span class="error">* <?php echo $passwordErr;?></span>
+                            </div>
+                            <div class="col s6 offset-s4">
+                                <input type="password" name="pwd" placeholder="Confirm Password">
+                            </div>
+                            <br>
+                            <br>
+                            <div class="col s8 offset-s6">
+                                <input type="submit" class="btn waves-effect wave-light" value="Sign Up">
+                            </div>
+                            <br>
+                            <br>
                         </fieldset>
-
-
-
-                        <div class="col s6 offset-s4">
-                            <input type="text" name="address" placeholder="address" value="<?php echo $address;?>">
-                            <span class="error">* <?php echo $addressErr;?></span>
-                        </div>
-                        <br>
-                        <div class="col s2 offset-s4">
-                            <input type="date" name="dob" placeholder="Date Of Birth" value="<?php echo $dob;?>">
-                            <span class="error">* <?php echo $dobErr;?></span>
-                        </div>
-                        <div class="col s4 offset-s4">
-                            <input type="text" name="tel" placeholder="Telephone number" pattern="[0-9]{10,10}" value="<?php echo $tel;?>">
-                            <span class="error">* <?php echo $telErr;?></span>
-                        </div>
-                        <div class="col s6 offset-s4">
-                            <input type="password" name="password" placeholder="Password" value="<?php echo $password;?>">
-                            <span class="error">* <?php echo $passwordErr;?></span>
-                        </div>
-                        <div class="col s6 offset-s4">
-                            <input type="password" name="pwd" placeholder="Confirm Password">
-                        </div>
-                        <br>
-                        <br>
-                        <div class="col s8 offset-s6">
-                            <input type="submit" class="btn waves-effect wave-light" value="Sign Up">
-                        </div>
-                        <br>
-                        <br>
-                    </fieldset>
-                </form>
-            </div>
-        </p>
+                    </form>
+                </div>
+            </p>
 
 
 
 
-</body>
+    </body>
 
-</html>
+    </html>

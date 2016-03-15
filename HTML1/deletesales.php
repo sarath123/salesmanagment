@@ -1,14 +1,12 @@
-
-
 <?php
 session_start();
 if(!isset($_SESSION['email']))
 {
     header("Location:login.php");
 }
-if($_SESSION['cat']=="agent")
+if($_SESSION['cat']=="manager")
 {
-    header ('Location:agntoptions.php');
+    header ('Location:login.php');
 }
 ?>
 
@@ -18,60 +16,60 @@ if($_SESSION['cat']=="agent")
 
 
 
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+    <html>
 
-<head>
-    <meta charset="UTF-8">
-
-
-
-    <title>Sales List</title>
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/materialize.css">
-    <link rel="stylesheet" href="css/materialize.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="js/materialize.js"></script>
-    <script src="js/materialize.min.js"></script>
-
-    <link rel="stylesheet" href="font/material-design-icons">
-    <link rel="stylesheet" href="font/roboto">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <nav>
-        <div class="nav-wrapper teal ">
-            <a href="#" class="brand-logo">Sales Management System</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="agntoptions.php">Home</a></li>
-                <li><a href="help.html">Help</a></li>
-                <li><a href="logout.php">Log Out</a></li>
-            </ul>
-        </div>
-    </nav>
+    <head>
+        <meta charset="UTF-8">
 
 
 
+        <title>Sales List</title>
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/materialize.css">
+        <link rel="stylesheet" href="css/materialize.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="js/materialize.js"></script>
+        <script src="js/materialize.min.js"></script>
 
-</head>
-
-<body>
-
-
-
-    <div class="container row">
-        <form>
-            <div class="input-field col s4 offset-s3">
-                <input id="search" type="search" required>
-                <label for="search"><i class="material-icons">search</i></label>
-                <i class="material-icons">close</i>
+        <link rel="stylesheet" href="font/material-design-icons">
+        <link rel="stylesheet" href="font/roboto">
+        <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+        <nav>
+            <div class="nav-wrapper teal ">
+                <a href="#" class="brand-logo">Sales Management System</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="agntoptions.php">Home</a></li>
+                    <li><a href="help.html">Help</a></li>
+                    <li><a href="logout.php">Log Out</a></li>
+                </ul>
             </div>
-
-        </form>
-    </div>
+        </nav>
 
 
 
 
-    <?php 
+    </head>
+
+    <body>
+
+
+
+        <div class="container row">
+            <form>
+                <div class="input-field col s4 offset-s3">
+                    <input id="search" type="search" required>
+                    <label for="search"><i class="material-icons">search</i></label>
+                    <i class="material-icons">close</i>
+                </div>
+
+            </form>
+        </div>
+
+
+
+
+        <?php 
        require 'config.php';
     
     $pid = $agentid = $date = $unit = $cname = $caddr = $salesid = "";
@@ -93,8 +91,8 @@ if($_SESSION['cat']=="agent")
 
       }
       
-
-              $strSQL = "SELECT * FROM sales";
+               $id=$_SESSION['agentidvalue'];
+              $strSQL = "SELECT * FROM sales WHERE AGENTID=$id ";
               $query=mysql_query($strSQL);
    
               if(mysql_num_rows($query)==0)
@@ -185,40 +183,40 @@ if($_SESSION['cat']=="agent")
 
 
 
-        <script type="text/javascript">
-            function myfunction(a, b, c, d, e, f) {
-                /*  var jsalesid = document.getElementsById("sid").value;
-                  var jpid = document.getElementById("sid").value;
-                  var jdate = document.getElementsById("sid").value;
-                  var junitsold = document.getElementsById("sid").value;
-                  var jcusname = document.getElementsById("sid").value;
-                  var jcusaddr = document.getElementsById("sid").value;*/
+            <script type="text/javascript">
+                function myfunction(a, b, c, d, e, f) {
+                    /*  var jsalesid = document.getElementsById("sid").value;
+                      var jpid = document.getElementById("sid").value;
+                      var jdate = document.getElementsById("sid").value;
+                      var junitsold = document.getElementsById("sid").value;
+                      var jcusname = document.getElementsById("sid").value;
+                      var jcusaddr = document.getElementsById("sid").value;*/
 
-                document.getElementById("msalesid").innerHTML = a;
-                document.getElementById("mproductid").innerHTML = c;
-                document.getElementById("mdate").innerHTML = b;
-                document.getElementById("munits").innerHTML = d;
-                document.getElementById("mcname").innerHTML = e;
-                document.getElementById("mcaddr").innerHTML = f;
-                document.getElementById("ssid").value = a;
+                    document.getElementById("msalesid").innerHTML = a;
+                    document.getElementById("mproductid").innerHTML = c;
+                    document.getElementById("mdate").innerHTML = b;
+                    document.getElementById("munits").innerHTML = d;
+                    document.getElementById("mcname").innerHTML = e;
+                    document.getElementById("mcaddr").innerHTML = f;
+                    document.getElementById("ssid").value = a;
 
-            }
-        </script>
-
-
-
-
-
-        <script type="text/javascript">
-            $(document).ready(function () {
-                // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-                $('.modal-trigger').leanModal();
-            });
-        </script>
+                }
+            </script>
 
 
 
 
-</body>
 
-</html>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+                    $('.modal-trigger').leanModal();
+                });
+            </script>
+
+
+
+
+    </body>
+
+    </html>
