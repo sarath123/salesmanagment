@@ -106,7 +106,7 @@ if($_SESSION['cat']=="manager")
                 <div class="col s4">&nbsp;</div>
                 <div class="col s4 ">
                     <div class="z-depth-1">
-                        <a href="login.html" class="card ">
+                        <a href="chart/agentProdVsQtyChart.php" class="card ">
                             <div class="card blue darken-2">
                                 <div class="card-content white-text">
                                     <span class="card-title">Sales Report</span>
