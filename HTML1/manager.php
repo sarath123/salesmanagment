@@ -110,7 +110,7 @@ if($_SESSION['cat']=="agent")
 
                 <div class="col s12 m3">
                     <div class="z-depth-1">
-                        <a href="signup.html" class="card ">
+                        <a href="chart/QuadrantAnalysis.php" class="card ">
                             <div class="card green">
                                 <div class="card-content white-text">
                                     <span class="card-title">Sales report</span>
