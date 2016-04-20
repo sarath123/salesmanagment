@@ -140,7 +140,14 @@ $salesid++;
         $q=mysql_query($strSQL);
     }
 
-	
+        
+        
+        
+        
+        
+      $qw="  SELECT SUM(UNITSSOLD) FROM sales WHERE AGENTID='$agentid'";
+      $r=mysql_query($qw);    
+	  
 if($q )
 {
  sleep(3);

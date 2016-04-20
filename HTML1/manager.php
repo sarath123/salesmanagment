@@ -58,7 +58,8 @@ if($_SESSION['cat']=="agent")
             $valueid=mysql_fetch_assoc($return);
             $ppp = $valueid['ID'];
             $lll = $valueid['LOCATION'];
-            echo " Manager ID : $ppp $lll";
+            echo " <h5>Manager ID : $ppp  <span style='float:right;'>Area : $lll<span></h5>";
+             
              $_SESSION["manageridvalue"]=$ppp;
             $_SESSION["location"]=$lll;
         }
@@ -82,13 +83,15 @@ if($_SESSION['cat']=="agent")
                 </div>
 
 
+
+
                 <div class="col s12 m3">
                     <div class="z-depth-1">
                         <a href="delete.php" class="card ">
                             <div class="card red">
                                 <div class="card-content white-text">
                                     <span class="card-title">Delete Agents</span>
-                                    <p>To delete existing sales agent</p>
+                                    <p>To remove sales agent</p>
                                 </div>
                             </div>
                         </a>
@@ -101,7 +104,7 @@ if($_SESSION['cat']=="agent")
                             <div class="card blue">
                                 <div class="card-content white-text">
                                     <span class="card-title">Sales log</span>
-                                    <p>To veiw sales log</p>
+                                    <p>To view sales log</p>
                                 </div>
                             </div>
                         </a>
@@ -114,7 +117,7 @@ if($_SESSION['cat']=="agent")
                             <div class="card green">
                                 <div class="card-content white-text">
                                     <span class="card-title">Sales report</span>
-                                    <p>To veiw sales report</p>
+                                    <p>To view sales report</p>
                                 </div>
                             </div>
                         </a>
@@ -134,6 +137,9 @@ if($_SESSION['cat']=="agent")
                     </div>
                 </div>
 
+
+
+
                 <div class="col s12 m3">
                     <div class="z-depth-1">
                         <a href="agentlist.php" class="card ">
@@ -147,7 +153,21 @@ if($_SESSION['cat']=="agent")
                     </div>
                 </div>
 
+                <div class="col s12 m3">
+                    <div class="z-depth-1">
+                        <a href="chart/QuadrantAnalysisManager.php" class="card ">
+                            <div class="card brown">
+                                <div class="card-content white-text">
+                                    <span class="card-title">Self Analysis</span>
+                                    <p>To analyse user performance </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
             </div>
+
 
 
 

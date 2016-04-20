@@ -29,12 +29,19 @@ if($_SESSION['cat']=="agent")
             <div class="nav-wrapper teal ">
                 <a href="#" class="brand-logo">Sales Management System</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="../manager.html">Home</a></li>
+                    <li><a href="../manager.php">Home</a></li>
                     <li><a href="../help.html">Help</a></li>
                 </ul>
             </div>
         </nav>
 
+    </head>
+
+    <body>
+        <h3 align="center">Quadrant Analysis</h3>
+        <form align="right" method="get" action="QuadrantAnalysis.php">
+            <button type="submit">Pie Chart</button>
+        </form>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
             google.charts.load("current", {
@@ -58,15 +65,28 @@ if($_SESSION['cat']=="agent")
         <?php 
           require '../config.php';
                 $c=0;
-        $color = array("#ff0000", "#ffff00", "#80ff00","#00ffff");
-        $query="SELECT SUM(UNITSSOLD),PRODUCTID FROM sales GROUP BY PRODUCTID";
+                    
+                $i=1;
+                $s=0;
+                    $q=0;
+        $color = array("#ffff00","#ff0000",  "#80ff00","#00ffff");
+        $query="SELECT SUM(UNITSSOLD), MONTH(DATE) AS MONTH , DATE FROM sales GROUP BY MONTH(DATE)";
         $return=mysql_query($query);
-         while($runrows= mysql_fetch_assoc($return))
-         {
+         while($i<10)
+         {  $runrows= mysql_fetch_assoc($return);
             $sum = $runrows['SUM(UNITSSOLD)'];
-            $pid = $runrows['PRODUCTID']; 
+            $month = $runrows['MONTH']; 
              $cc=$color[$c++];
-             echo " [\"$pid\",$sum,\"$cc\", ],";
+            if($month==$i|| $month==($i+1) ||$month==($i+2))
+                $s+=$sum;
+             else     
+               { $q=($i+2)/3;
+                 echo " [\"$q\st Qudarant\",$s,\"$cc\", ],";
+                  $i=3+$i;
+                $s=$sum;
+               }
+               
+             
              if($c==4)
                   $c=0;
          }        
@@ -85,7 +105,7 @@ if($_SESSION['cat']=="agent")
                        2]);
 
                 var options = {
-                    title: "ProductID vs Units Sold",
+                    title: "Yearly Quadrant vs Units Sold",
                     width: 800,
                     height: 600,
                     bar: {
@@ -100,9 +120,14 @@ if($_SESSION['cat']=="agent")
             }
         </script>
         <div id="columnchart_values" style="width: 900px; height: 300px;"></div>
-    </head>
 
-    <body>
+
+
+
+
+
+
+
 
 
         </nav>
@@ -112,7 +137,7 @@ if($_SESSION['cat']=="agent")
 
         <?php 
           require 'config.php';
-    
+        
         $query="SELECT SUM(UNITSSOLD),PRODUCTID FROM sales GROUP BY PRODUCTID";
         $return=mysql_query($query);
          while($runrows= mysql_fetch_assoc($return))

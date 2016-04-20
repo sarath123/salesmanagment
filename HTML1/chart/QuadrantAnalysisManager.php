@@ -39,8 +39,8 @@ if($_SESSION['cat']=="agent")
     <body>
 
         <h3 align="center">Quadrant Analysis</h3>
-        <form align="right" method="get" action="QAbar.php">
-            <button type="submit">Bar Graph</button>
+        <form align="right" method="get" action="QAbarManager.php">
+            <button type="submit">Pie Chart</button>
         </form>
 
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -78,7 +78,11 @@ if($_SESSION['cat']=="agent")
                 data.addColumn('number', 'Slices');
                 data.addRows([<?php  
                 require '../config.php';
-                    $query="SELECT SUM(UNITSSOLD), MONTH(DATE) AS MONTH , DATE FROM sales GROUP BY MONTH(DATE) ";
+                  
+                     $location = $_SESSION["location"];
+                     $id = $_SESSION["manageridvalue"];
+                    $query="SELECT SUM(UNITSSOLD), MONTH(DATE) AS MONTH , DATE FROM sales, user WHERE user.LOCATION='$location' AND user.ID=sales.AGENTID GROUP BY MONTH(DATE)  ";
+                     //$strSQL = "SELECT * FROM user WHERE user.LOCATION='$location' AND user.ID<>$id";
                     $return=mysql_query($query);
        
                     while($runrows= mysql_fetch_assoc($return))
@@ -121,7 +125,8 @@ if($_SESSION['cat']=="agent")
                 data.addColumn('number', 'Slices');
                 data.addRows([<?php  
                 
-                    $query="SELECT SUM(UNITSSOLD), MONTH(DATE) AS MONTH , DATE FROM sales GROUP BY MONTH(DATE) ";
+                   $l=$_SESSION["location"];
+                     $query="SELECT SUM(UNITSSOLD), MONTH(DATE) AS MONTH , DATE FROM sales, user WHERE user.LOCATION='$location' AND user.ID=sales.AGENTID GROUP BY MONTH(DATE)  ";
                     $return=mysql_query($query);
        
                     while($runrows= mysql_fetch_assoc($return))
@@ -162,7 +167,8 @@ if($_SESSION['cat']=="agent")
                 data.addRows([
                     <?php  
                
-                    $query="SELECT SUM(UNITSSOLD), MONTH(DATE) AS MONTH , DATE FROM sales GROUP BY MONTH(DATE) ";
+                   $l=$_SESSION["location"];
+                    $query="SELECT SUM(UNITSSOLD), MONTH(DATE) AS MONTH , DATE FROM sales, user WHERE user.LOCATION='$location' AND user.ID=sales.AGENTID GROUP BY MONTH(DATE)  ";
                     $return=mysql_query($query);
        
                     while($runrows= mysql_fetch_assoc($return))
@@ -200,7 +206,8 @@ if($_SESSION['cat']=="agent")
                 data.addColumn('number', 'Slices');
                 data.addRows([
                     <?php  
-                    $query="SELECT SUM(UNITSSOLD), MONTH(DATE) AS MONTH , DATE FROM sales GROUP BY MONTH(DATE) ";
+                    $l=$_SESSION["location"];
+                   $query="SELECT SUM(UNITSSOLD), MONTH(DATE) AS MONTH , DATE FROM sales, user WHERE user.LOCATION='$location' AND user.ID=sales.AGENTID GROUP BY MONTH(DATE)  ";
                     $return=mysql_query($query);
        
                     while($runrows= mysql_fetch_assoc($return))

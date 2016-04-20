@@ -29,7 +29,7 @@ if($_SESSION['cat']=="agent")
             <div class="nav-wrapper teal ">
                 <a href="#" class="brand-logo">Sales Management System</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="../manager.html">Home</a></li>
+                    <li><a href="../manager.php">Home</a></li>
                     <li><a href="../help.html">Help</a></li>
                 </ul>
             </div>
@@ -59,12 +59,12 @@ if($_SESSION['cat']=="agent")
           require '../config.php';
                 $c=0;
         $color = array("#ff0000", "#ffff00", "#80ff00","#00ffff");
-        $query="SELECT SUM(UNITSSOLD),PRODUCTID FROM sales GROUP BY PRODUCTID";
+        $query="SELECT SUM(UNITSSOLD),DATE FROM sales GROUP BY DATE";
         $return=mysql_query($query);
          while($runrows= mysql_fetch_assoc($return))
          {
             $sum = $runrows['SUM(UNITSSOLD)'];
-            $pid = $runrows['PRODUCTID']; 
+            $pid = $runrows['DATE']; 
              $cc=$color[$c++];
              echo " [\"$pid\",$sum,\"$cc\", ],";
              if($c==4)
@@ -85,7 +85,7 @@ if($_SESSION['cat']=="agent")
                        2]);
 
                 var options = {
-                    title: "ProductID vs Units Sold",
+                    title: "Date vs Units Sold",
                     width: 800,
                     height: 600,
                     bar: {
