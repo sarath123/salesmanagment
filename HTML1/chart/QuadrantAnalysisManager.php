@@ -40,7 +40,7 @@ if($_SESSION['cat']=="agent")
 
         <h3 align="center">Quadrant Analysis</h3>
         <form align="right" method="get" action="QAbarManager.php">
-            <button type="submit">Pie Chart</button>
+            <button type="submit">Bar Graph</button>
         </form>
 
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

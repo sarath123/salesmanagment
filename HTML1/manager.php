@@ -8,6 +8,10 @@ if($_SESSION['cat']=="agent")
 {
     header ('Location:agntoptions.php');
 }
+if($_SESSION['cat']=="admin")
+{
+    header ('Location:admin.php');
+}
 ?>
     <!DOCTYPE html>
 
@@ -100,7 +104,7 @@ if($_SESSION['cat']=="agent")
 
                 <div class="col s12 m3">
                     <div class="z-depth-1">
-                        <a href="signup.html" class="card ">
+                        <a href="salesLogManager.php" class="card ">
                             <div class="card blue">
                                 <div class="card-content white-text">
                                     <span class="card-title">Sales log</span>
@@ -165,6 +169,32 @@ if($_SESSION['cat']=="agent")
                         </a>
                     </div>
                 </div>
+
+                <div class="col s12 m3">
+                    <div class="z-depth-1">
+                        <a href="reviewWork.php" class="card ">
+                            <div class="card cyan">
+                                <div class="card-content white-text">
+                                    <span class="card-title">Review Work</span>
+                                    <p>To assign and review sales </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col s12 m3">
+                    <div class="z-depth-1">
+                        <a href="agentRanking.php" class="card ">
+                            <div class="card black">
+                                <div class="card-content white-text">
+                                    <span class="card-title">Agent Ranking</span>
+                                    <p>To view ranking of agents </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
 
             </div>
 

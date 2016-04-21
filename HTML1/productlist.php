@@ -8,6 +8,7 @@ if($_SESSION['cat']=="agent")
 {
     header ('Location:agntoptions.php');
 }
+
 ?>
 
 
@@ -39,7 +40,7 @@ if($_SESSION['cat']=="agent")
             <div class="nav-wrapper teal ">
                 <a href="#" class="brand-logo">Sales Management System</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="manager.php">Home</a></li>
+                    <li><a href="<?php echo $_SESSION['cat'] ?>.php">Home</a></li>
                     <li><a href="help.html">Help</a></li>
                     <li><a href="logout.php">Log Out</a></li>
                 </ul>

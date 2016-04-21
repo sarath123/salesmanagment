@@ -83,7 +83,7 @@ if($_SESSION['cat']=="agent")
                 $s+=$sum;
              else     
                { $q=($i+2)/3;
-                 echo " [\"$q\st Qudarant\",$s,\"$cc\", ],";
+                 echo " [\"Quadrant $q \",$s,\"$cc\", ],";
                   $i=3+$i;
                 $s=$sum;
                }

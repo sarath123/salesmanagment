@@ -8,6 +8,10 @@ if($_SESSION['cat']=="agent")
 {
     header ('Location:agntoptions.php');
 }
+if($_SESSION['cat']=="admin")
+{
+    header ('Location:admin.php');
+}
 ?>
 
 

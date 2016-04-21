@@ -8,6 +8,10 @@ if($_SESSION['cat']=="manager")
 {
     header ('Location:login.php');
 }
+if($_SESSION['cat']=="admin")
+{
+    header ('Location:admin.php');
+}
 ?>
 
 

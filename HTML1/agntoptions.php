@@ -8,6 +8,10 @@ if($_SESSION['cat']=="manager")
 {
     header("Location:manager.php");
 }
+if($_SESSION['cat']=="admin")
+{
+    header ('Location:admin.php');
+}
     
 ?>
     <!DOCTYPE html>
@@ -55,7 +59,7 @@ if($_SESSION['cat']=="manager")
        
             $valueid=mysql_fetch_assoc($return);
             $ppp = $valueid['ID'];
-            echo " Agent ID : $ppp";
+            echo " <h5>Agent ID : $ppp</h5>";
              $_SESSION["agentidvalue"]=$ppp;
         }
     
@@ -145,6 +149,24 @@ if($_SESSION['cat']=="manager")
                                 <div class="card-content white-text">
                                     <span class="card-title">Sales List</span>
                                     <p>To veiw user transactoin details</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col s2">&nbsp;</div>
+            </div>
+
+
+            <div class="row">
+                <div class="col s4">&nbsp;</div>
+                <div class="col s4 ">
+                    <div class="z-depth-1">
+                        <a href="chart/QuadrantAnalysis.php" class="card ">
+                            <div class="card brown darken-2">
+                                <div class="card-content white-text">
+                                    <span class="card-title">General Sales Analysis</span>
+                                    <p>To view general quadrant analysis</p>
                                 </div>
                             </div>
                         </a>

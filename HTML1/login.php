@@ -25,7 +25,7 @@ if(isset($_POST['email']))
     $password=$_POST['password'];
     
     $query=mysql_query("SELECT * FROM user WHERE EMAIL='$username'"); 
-    if($query==true)
+    if($query==true && mysql_num_rows($query)>0)
     {   
         $row=mysql_fetch_assoc($query);
         
@@ -36,7 +36,8 @@ if(isset($_POST['email']))
                {
                 $_SESSION['cat']="manager";
                 header ('Location:manager.php');
-                echo "welcome manager";}
+                echo "welcome manager";
+              }
             
              else if($row["POSITION"]=="agent")
                {
@@ -51,9 +52,32 @@ if(isset($_POST['email']))
         
         
     }
+    
+    
+    else 
+    {
+        $query1=mysql_query("SELECT * FROM admin WHERE username='$username'");
+         if($query1==true)
+         {   
+            $row=mysql_fetch_assoc($query1);
+        
+          if($password==$row["password"])
+            {
+              $_SESSION["email"]=$username;
+            
+                $_SESSION['cat']="admin";
+                header ('Location:admin.php');
+                echo "welcome admin";
+             }
+   
+        
+         }
+}
 }
     
 ?>
+
+
     <!DOCTYPE html>
     <html>
 

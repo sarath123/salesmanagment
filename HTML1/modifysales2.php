@@ -8,6 +8,10 @@ if($_SESSION['cat']=="manager")
 {
     header ('Location:login.php');
 }
+if($_SESSION['cat']=="admin")
+{
+    header ('Location:admin.php');
+}
 ?>
 
 
@@ -110,7 +114,7 @@ if($_SESSION['cat']=="manager")
                       echo " 
                       
                    <tr>
-                        <td name='sid'><a href='login.html'>$salesid</a></td>
+                        <td name='sid'>$salesid</td>
                         <td>$date</td>
                         <td>$pid</td>
                         <td>$unit</td>
