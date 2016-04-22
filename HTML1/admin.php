@@ -116,7 +116,7 @@ if($_SESSION['cat']=="manager")
 
                 <div class="col s12 m3">
                     <div class="z-depth-1">
-                        <a href="chart/QuadrantAnalysis.php" class="card ">
+                        <a href="removeProduct.php" class="card ">
                             <div class="card green">
                                 <div class="card-content white-text">
                                     <span class="card-title">Remove Product</span>
@@ -170,6 +170,19 @@ if($_SESSION['cat']=="manager")
                 </div>
 
 
+
+                <div class="col s12 m3">
+                    <div class="z-depth-1">
+                        <a href="managerRanking.php" class="card ">
+                            <div class="card red">
+                                <div class="card-content white-text">
+                                    <span class="card-title">Manager Ranking</span>
+                                    <p>Ranking based on sales </p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
 
 
 

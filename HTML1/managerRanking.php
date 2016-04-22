@@ -8,9 +8,9 @@ if($_SESSION['cat']=="agent")
 {
     header ('Location:agntoptions.php');
 }
-if($_SESSION['cat']=="admin")
+if($_SESSION['cat']=="manager")
 {
-    header ('Location:admin.php');
+    header ('Location:manager.php');
 }
 ?>
     <!DOCTYPE html>
@@ -56,31 +56,31 @@ if($_SESSION['cat']=="admin")
               $location = $_SESSION["location"];
               $id = $_SESSION["manageridvalue"];
         
-              $strSQL = "SELECT SUM(UNITSSOLD),AGENTID,NAME FROM SALES, USER WHERE USER.ID=AGENTID AND LOCATION='$location' GROUP BY AGENTID";
+              $strSQL = "SELECT NAME,USER.LOCATION AS LOCATION,RESULT FROM USER,(SELECT SUM(UNITSSOLD)AS RESULT,USER.LOCATION FROM SALES, USER WHERE USER.ID=AGENTID GROUP BY USER.LOCATION) AS TEMP WHERE POSITION='manager'AND TEMP.LOCATION=USER.LOCATION";
                $query = mysql_query($strSQL);    
       
                   echo "
                        <table border='0' >
                           <tr>
-                            <th>ID</th>
-                            <th>Name</th>
                             <th>RANK</th>
-                            <th>UNITS SOLD</th>
+                            <th>NAME</th> 
+                            <th>LOCATION</th>
+                            <th>UNITSSOLD</th>
                           </tr>";
                     
                    $rank = 1;   
                 while($runrows= mysql_fetch_assoc($query))
                   { 
                       $name = $runrows['NAME'];
-                      $id = $runrows['AGENTID'];
-                      $units = $runrows['SUM(UNITSSOLD)'];
+                      $location = $runrows['LOCATION'];
+                      $units = $runrows['RESULT'];
                     
                       echo " 
                       
                       <tr>
-                        <td>$id</td>
-                        <td>$name</td>
                         <td>$rank</td>
+                        <td>$name</td>
+                        <td>$location</td>
                         <td>$units</td>
                         </tr>
                        ";

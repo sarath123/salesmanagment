@@ -78,9 +78,19 @@ if($_SESSION['cat']=="admin")
    }
     
       
+      
+      $p=$_POST["pid"];
+      $check="SELECT PID FROM product WHERE PID=$p";
+      $result= mysql_query($check);
+      
        if (empty($_POST["pid"])) {
       $pidErr = "Product ID is required";
-     } else {
+     } 
+      else if(mysql_num_rows($result)=='')
+      {
+          $pidErr="product with ID:$p not found";
+      }
+      else {
       $pid = test_input($_POST["pid"]);
       $f++;
    }
@@ -93,12 +103,35 @@ if($_SESSION['cat']=="admin")
       $f++;
    }
       
+      
+     
+      $check="SELECT STOCK FROM product WHERE PID=$p";
+      $result= mysql_query($check);
+      $runrows= mysql_fetch_assoc($result);
+      $stock=$runrows['STOCK'];
+      $sold=$_POST["unitsold"];
          if (empty($_POST["unitsold"])) {
       $unitErr = "Number of units sold is required";
-     } else {
+     } 
+      else if(mysql_num_rows($result)=='')
+      {
+          $unitErr="Not Enough Stock";
+          
+      }
+      else if($sold>$stock)
+      {
+          
+          $unitErr="Not Enough Stock";
+      }
+      else {
       $unit = test_input($_POST["unitsold"]);
       $f++;
    }
+      
+      
+      
+      
+      
       
         if (empty($_POST["cusname"])) {
       $cnameErr = "Customer name is required";
@@ -113,6 +146,9 @@ if($_SESSION['cat']=="admin")
       $caddr = test_input($_POST["cusaddr"]);
       $f++;
    }
+      
+      
+      
       
       
       

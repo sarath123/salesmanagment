@@ -76,7 +76,7 @@ if($_SESSION['cat']=="admin")
                 <div class="col s12 m3">
                     <div class="z-depth-1 ">
                         <a href="signup.php" class="card">
-                            <div class="card orange ">
+                            <div class="card blue ">
                                 <div class="card-content white-text">
                                     <span class="card-title">Add Agents</span>
                                     <p>To add new sales agent</p>
@@ -105,7 +105,7 @@ if($_SESSION['cat']=="admin")
                 <div class="col s12 m3">
                     <div class="z-depth-1">
                         <a href="salesLogManager.php" class="card ">
-                            <div class="card blue">
+                            <div class="card orange">
                                 <div class="card-content white-text">
                                     <span class="card-title">Sales log</span>
                                     <p>To view sales log</p>
@@ -120,8 +120,8 @@ if($_SESSION['cat']=="admin")
                         <a href="chart/QuadrantAnalysis.php" class="card ">
                             <div class="card green">
                                 <div class="card-content white-text">
-                                    <span class="card-title">Sales report</span>
-                                    <p>To view sales report</p>
+                                    <span class="card-title">Quadrant report</span>
+                                    <p>General report on Analysis</p>
                                 </div>
                             </div>
                         </a>

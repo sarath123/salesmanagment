@@ -179,10 +179,10 @@ if($_SESSION['cat']=="agent")
     
 if($q)
 {
-     echo"<h5>STOCK UPDATED</h5>";  
+    // echo"<h5>STOCK UPDATED</h5>";  
         
- sleep(2);
-header ('location: admin.php');
+// sleep(2);
+//header ('location: admin.php');
 }
    
     
@@ -193,7 +193,11 @@ header ('location: admin.php');
 
 
 
-                <form method="POST" action="modifyStock2.php">
+                <?php  
+if ($_SERVER["REQUEST_METHOD"] == "GET")
+
+{  echo '
+    <form method="POST" action="modifyStock2.php">
 
 
 
@@ -205,12 +209,12 @@ header ('location: admin.php');
                             <div class="col s2">
 
                                 <input type="text" name="stock" placeholder="New Stock" value="">
-                                <input type="hidden" name="pid" placeholder="New Stock" value="<?php echo $pid ?>">
+                                <input type="hidden" name="pid" placeholder="New Stock" value=" '.$pid.' ">
 
-                            </div>
-                            <br>
-                            <div class="col s5">&nbsp;</div>
-                        </div>
+                    </div>
+                    <br>
+                    <div class="col s5">&nbsp;</div>
+                    </div>
                     </div>
 
                     <div class="row">
@@ -223,12 +227,29 @@ header ('location: admin.php');
 
 
 
-                </form>
+                    </form>
 
 
-
-
-
+                    '; }
+        
+        else
+            echo'<h5>Stock Updated</h5>
+               <div class="row">
+                       
+                        <div class="col s2">
+               <form action="modifyStock.php">
+                        <button type="submit"  class="btn waves-effect wave-light" >Update Stock</button>
+                          </div>
+                       
+                   
+                    </form>
+            
+            ';
+        
+        
+        
+        
+        ?>
 
 
 

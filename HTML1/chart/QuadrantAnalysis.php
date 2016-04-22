@@ -4,10 +4,10 @@ if(!isset($_SESSION['email']))
 {
     header("Location:../login.php");
 }
-if($_SESSION['cat']=="agent")
+/*if($_SESSION['cat']=="agent")
 {
     header ('Location:../agntoptions.php');
-}
+}*/
 ?>
 
 

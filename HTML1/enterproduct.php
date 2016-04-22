@@ -157,7 +157,7 @@ if($_SESSION['cat']=="manager")
 	
 if($q)
 {
- header ('location: login.html');
+ header ('location: admin.php');
 }
              mysql_close();
  
