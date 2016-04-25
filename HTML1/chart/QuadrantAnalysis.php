@@ -8,7 +8,17 @@ if(!isset($_SESSION['email']))
 {
     header ('Location:../agntoptions.php');
 }*/
+
+if($_SESSION['cat']=="agent") 
+    $_SESSION['home']="agntoptions";
+else if ($_SESSION['cat']=="manager") 
+     $_SESSION['home']="manager"; 
+else 
+    $_SESSION['home']="admin";
+
 ?>
+
+
 
 
     <html>
@@ -30,7 +40,7 @@ if(!isset($_SESSION['email']))
             <div class="nav-wrapper teal ">
                 <a href="#" class="brand-logo">Sales Management System</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="../manager.php">Home</a></li>
+                    <li><a href="../<?php echo $_SESSION['home'] ?>.php">Home</a></li>
                     <li><a href="help.html">Help</a></li>
                 </ul>
             </div>

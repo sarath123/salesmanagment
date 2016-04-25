@@ -113,12 +113,14 @@ if($_SESSION['cat']=="agent")
                       echo " 
                       <option>
                    <tr>
-                        <td><a href='modifyStock2.php?sid=$pid'>$pid</a></td>
+                        <td>$pid</td>
                         <td>$name</td>
                         <td>$category</td>
                         <td>$cost</td>
                         <td>$stock</td>
                         <td>$productioncost</td>
+                        <td><a href='modifyStock2.php?sid=$pid'>Modify Stock</a></td>
+                        
                       </tr></option>
                        ";
                   }

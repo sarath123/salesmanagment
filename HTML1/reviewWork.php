@@ -52,6 +52,25 @@ if($_SESSION['cat']=="agent")
 
         <?php 
                 require 'config.php';
+        
+              $date = date('Y-m-d');
+              $time=strtotime($date);
+              $month=date("n",$time);
+              
+              echo 'Current Date : '.$date;
+             
+              $q=(int)($month/3);
+              $q++;
+              
+              $q1=$q*3-2;
+              $q2=$q*3-2;
+              $q3=$q*3-2;
+        
+              
+        
+              
+              
+             
     
               $name = $email = $address = $dob = $tel = $sex = $date = $id = $joindate = $target = $salary = $bonus = $rating = "";
     
@@ -72,7 +91,7 @@ if($_SESSION['cat']=="agent")
               else
               {
                   
-                  echo "
+                  /*echo "
                        <table border='0' >
                           <tr>
                             <th>ID</th>
@@ -81,7 +100,7 @@ if($_SESSION['cat']=="agent")
                             <th>Phone</th>
                             <th>Target</th>
                             <th>Rating</th>
-                          </tr>";
+                          </tr>";*/
                   
                   
                   while($runrows= mysql_fetch_assoc($query))
@@ -93,7 +112,7 @@ if($_SESSION['cat']=="agent")
                       $target = $runrows['TARGET'];
                       $rating = $runrows['RATING'];
                      
-                      echo " 
+                    /*  echo " 
                       
                       <tr>
                         <td>$id</td>
@@ -103,7 +122,33 @@ if($_SESSION['cat']=="agent")
                         <td>$target</td>
                         <td>$rating</td>
                       </tr>
-                       ";
+                       ";*/
+                      $oldtarget=0; 
+                      $tarquery="SELECT SUM(UNITSSOLD), MONTH(DATE) AS MONTH FROM sales, user WHERE user.LOCATION='$location' AND user.ID=sales.AGENTID AND sales.AGENTID=$id AND (MONTH(DATE)=$q1 OR MONTH(DATE)=$q2 OR MONTH(DATE)=$q3)GROUP BY MONTH(DATE)";
+                       $tarresult=mysql_query($tarquery);
+                        while($tarrows= mysql_fetch_assoc($tarresult))
+                        {
+                            $oldtarget+=$tarrows['SUM(UNITSSOLD)'];
+                        }
+                      
+              
+                      echo" <tr>
+                      <fieldset>
+                                <pre><b>Agent ID</b> :$id                           <b>Name</b> :$name</pre>
+                                <pre><b>Address</b> :$address                       <b>Phone</b> :$tel</pre>
+                                <pre><b>Rating</b> :$rating                             <b>Target</b> :$target</pre>
+                                <p class='right-align'><b>Last Quadrant Achieved sales unit</b> :$oldtarget</p>
+                                  <button>update target</button>
+                                
+                                
+                                
+                                
+                        </fieldset>
+                    </tr>";
+                      
+                      
+                      
+                        
                   }
               }
     

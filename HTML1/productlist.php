@@ -57,7 +57,7 @@ if($_SESSION['cat']=="agent")
 
         <?php 
        require 'config.php';
-    echo $_SESSION['email'] ;
+    //echo $_SESSION['email'] ;
     $name = $pid =  $unitsm =  $category = $cost = $stock = $productioncost = "";
     
 

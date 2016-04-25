@@ -123,12 +123,13 @@ if($_SESSION['cat']=="admin")
                       echo " 
                       <option>
                    <tr>
-                        <td><a href='modifysales2.php?sid=$salesid'>$salesid</a></td>
+                        <td>$salesid</td>
                         <td>$date</td>
                         <td>$pid</td>
                         <td>$unit</td>
                         <td>$cname</td>
                         <td>$caddr</td>
+                        <td><a href='modifysales2.php?sid=$salesid'>Modify</a></td>
                       </tr></option>
                        ";
                   }

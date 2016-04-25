@@ -67,7 +67,7 @@ if($_SESSION['cat']=="admin")
   
       
               
-              $strSQL = "SELECT * FROM sales, user WHERE user.LOCATION='$location' AND user.ID=sales.AGENTID";
+              $strSQL = "SELECT * FROM sales, user WHERE user.LOCATION='$location' AND user.ID=sales.AGENTID ORDER BY DATE DESC";
              
               $query=mysql_query($strSQL);
    
