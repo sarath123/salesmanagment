@@ -152,11 +152,12 @@ function test_input($data) {
     if($f==6)
     {   
         
-          
+          $tdate = date('Y-m-d');
+              
        
         $location =  $_SESSION["location"];
        
- $strSQL = "INSERT INTO user (NAME,ADDRESS,DOB,EMAIL,PHONE,PASSWORD,SEX,JOINDATE,POSITION,LOCATION) VALUES('$name','$address','$dob','$email','$tel','$password','$sex','$date','agent','$location')";
+ $strSQL = "INSERT INTO user (NAME,ADDRESS,DOB,EMAIL,PHONE,PASSWORD,SEX,JOINDATE,POSITION,LOCATION,TDATE) VALUES('$name','$address','$dob','$email','$tel','$password','$sex','$date','agent','$location','$tdate')";
         $q=mysql_query($strSQL);
          
     }

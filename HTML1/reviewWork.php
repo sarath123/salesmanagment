@@ -111,7 +111,7 @@ if($_SESSION['cat']=="agent")
                       $tel = $runrows['PHONE'];
                       $target = $runrows['TARGET'];
                       $rating = $runrows['RATING'];
-                     
+                      $prevtarget=$runrows['PREVTARGET'];
                     /*  echo " 
                       
                       <tr>
@@ -123,24 +123,90 @@ if($_SESSION['cat']=="agent")
                         <td>$rating</td>
                       </tr>
                        ";*/
-                      $oldtarget=0; 
+                      $oldsales=0; 
                       $tarquery="SELECT SUM(UNITSSOLD), MONTH(DATE) AS MONTH FROM sales, user WHERE user.LOCATION='$location' AND user.ID=sales.AGENTID AND sales.AGENTID=$id AND (MONTH(DATE)=$q1 OR MONTH(DATE)=$q2 OR MONTH(DATE)=$q3)GROUP BY MONTH(DATE)";
                        $tarresult=mysql_query($tarquery);
                         while($tarrows= mysql_fetch_assoc($tarresult))
                         {
-                            $oldtarget+=$tarrows['SUM(UNITSSOLD)'];
+                            $oldsales+=$tarrows['SUM(UNITSSOLD)'];
                         }
                       
+                
+                //prevTarget      
+                      
+                      
+                      
+                      
+                      
+                      
+                  
+                 $temp=$target;
+                      
+                      
+                     $mon=mysql_query( "SELECT MONTH(TDATE) AS MONTH FROM user WHERE ID='$id'");        
+                      $row1= mysql_fetch_assoc($mon);
+                      
+                      $row=$row1['MONTH'];
+                      
+                    if($row>=($q1+3) && $row>=($q2+3) && $row>=($q3+3) )
+                    {  $target=round($prevtarget+($oldsales*0.05));
+                  
+                        mysql_query( "UPDATE user SET TARGET='$target' WHERE ID='$id'");        
+                 
+                      if($prevtarget==0)
+                      {  $prevtarget=$oldsales;
+                         mysql_query( "UPDATE user SET PREVTARGET='$prevtarget' WHERE ID='$id'");       
+                      }
+                      else
+                           mysql_query( "UPDATE user SET PREVTARGET='$temp' WHERE ID='$id'");   
+                        
+                     mysql_query( "UPDATE user SET TDATE='$date' WHERE ID='$id'");       
+                        
+                    }
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      //BONUS
+                      
+                        if($oldsales>$prevtarget)
+                        {
+                            $bonus=0.08*$oldsales;
               
+                        }
+                      else
+                            $bonus=0;
+                      
+                      
+                      
+                     mysql_query( "UPDATE user SET BONUS='$bonus' WHERE ID='$id'");   
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
                       echo" <tr>
                       <fieldset>
                                 <pre><b>Agent ID</b> :$id                           <b>Name</b> :$name</pre>
                                 <pre><b>Address</b> :$address                       <b>Phone</b> :$tel</pre>
                                 <pre><b>Rating</b> :$rating                             <b>Target</b> :$target</pre>
-                                <p class='right-align'><b>Last Quadrant Achieved sales unit</b> :$oldtarget</p>
-                                  <button>update target</button>
-                                
-                                
+                                <p class='right-align'><b>Last Quadrant Achieved sales unit</b> :$oldsales</p>
+                                 
+                                        
                                 
                                 
                         </fieldset>
@@ -153,7 +219,15 @@ if($_SESSION['cat']=="agent")
               }
     
  
-               echo " </table>";                             
+              // echo " </table>";           
+        
+        
+        
+        
+        
+        
+        
+        
                              mysql_close();
   
                        

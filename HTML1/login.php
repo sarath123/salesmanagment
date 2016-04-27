@@ -117,11 +117,13 @@ if(isset($_POST['email']))
                     <form id="sign" action="login.php" method="post">
 
                         <div class="col s4 offset-s4">
+                            Name:
                             <input type="email" name="email" placeholder="email" pattern="[a-zA-Z0-9]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,}" title="example@example.com" required>
                         </div>
                         <br>
 
                         <div class="col s4 offset-s4">
+                            Password:
                             <input type="password" name="password" placeholder="password" required>
                         </div>
                         <br>

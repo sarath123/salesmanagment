@@ -20,7 +20,7 @@ if($_SESSION['cat']=="agent")
 
 
 
-        <title>Agent List</title>
+        <title>Manager List</title>
         <link rel="stylesheet" href="css/materialize.css">
         <link rel="stylesheet" href="css/global.css">
         <link rel="stylesheet" href="css/materialize.min.css">

@@ -178,6 +178,9 @@ $salesid++;
            
         $strSQL = "INSERT INTO sales (AGENTID,PRODUCTID,UNITSSOLD,CUSADDR,CUSNAME,DATE,SALESID) VALUES('$agentid','$pid','$unit','$caddr','$cname','$date','$salesid')";
         $q=mysql_query($strSQL);
+           
+        $stock-=$unit;   
+        mysql_query("UPDATE product SET STOCK='$stock' WHERE PID=$pid "  );
     }
 
         

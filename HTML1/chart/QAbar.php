@@ -81,7 +81,7 @@ if(!isset($_SESSION['email']))
                 $s+=$sum;
              else     
                { $q=($i+2)/3;
-                 echo " [\"$q\st Qudarant\",$s,\"$cc\", ],";
+                 echo " [\"$q Qudarant\",$s,\"$cc\", ],";
                   $i=3+$i;
                 $s=$sum;
                }

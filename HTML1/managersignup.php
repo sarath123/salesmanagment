@@ -186,11 +186,13 @@ if($q)
                             <legend>
                                 <h6 style="margin:100px;">Enter your details</h6></legend>
                             <div class="col s2 offset-s4">
+                                Name:
                                 <input type="text" name="name" placeholder="Name" value="<?php echo $name;?>"> <span class="error">* <?php echo $nameErr;?></span>
 
                             </div>
                             <br>
                             <div class="col s4 offset-s4">
+                                Email:
                                 <input type="email" name="email" placeholder="email" pattern="[a-zA-Z0-9]{3,}@[a-zA-Z]{3,}[.]{1}[a-zA-Z]{2,}" value="<?php echo $email;?>">
                                 <span class="error">* <?php echo $emailErr;?></span>
                             </div>
@@ -209,28 +211,34 @@ if($q)
 
 
                             <div class="col s6 offset-s4">
+                                Address:
                                 <input type="text" name="address" placeholder="address" value="<?php echo $address;?>">
                                 <span class="error">* <?php echo $addressErr;?></span>
                             </div>
                             <br>
                             <div class="col s2 offset-s4">
+                                Location:
                                 <input type="text" name="location" placeholder="Location" value="<?php echo $location;?>"> <span class="error">* <?php echo $locationErr;?></span>
 
                             </div>
                             <br>
                             <div class="col s2 offset-s1">
+                                Date of Birth:
                                 <input type="date" name="dob" placeholder="Date Of Birth" value="<?php echo $dob;?>">
                                 <span class="error">* <?php echo $dobErr;?></span>
                             </div>
                             <div class="col s4 offset-s4">
+                                Telephone Number:
                                 <input type="text" name="tel" placeholder="Telephone number" pattern="[0-9]{10,10}" value="<?php echo $tel;?>">
                                 <span class="error">* <?php echo $telErr;?></span>
                             </div>
                             <div class="col s6 offset-s4">
+                                Password:
                                 <input type="password" name="password" placeholder="Password" value="<?php echo $password;?>">
                                 <span class="error">* <?php echo $passwordErr;?></span>
                             </div>
                             <div class="col s6 offset-s4">
+                                Confirm Password:
                                 <input type="password" name="pwd" placeholder="Confirm Password">
                             </div>
                             <br>

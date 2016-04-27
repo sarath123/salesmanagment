@@ -150,7 +150,7 @@ if($_SESSION['cat']=="manager")
 
     if($f==6)
     {   echo $f;
-        $strSQL = "INSERT INTO product (PID,NAME,CATEGORY,UNITSM,COST,PRODUCTIONCOST) VALUES('$pid','$name','$category','$unit','$price','$prod')";
+        $strSQL = "INSERT INTO product (PID,NAME,CATEGORY,UNITSM,COST,PRODUCTIONCOST,STOCK) VALUES('$pid','$name','$category','$unit','$price','$prod','$unit')";
         $q=mysql_query($strSQL);
     }
 
@@ -179,6 +179,7 @@ if($q)
                         <div class="row">
                             <div class="col s5">&nbsp;</div>
                             <div class="col s2">
+                                Product ID:
                                 <input type="text" name="pid" placeholder="Product ID" value="<?php echo $pid;?>">
                                 <span class="error">* <?php echo $pidErr;?></span>
                             </div>
@@ -190,6 +191,7 @@ if($q)
                         <div class="row">
                             <div class="col s5">&nbsp;</div>
                             <div class="col s4">
+                                Product Name:
                                 <input type="text" name="product_Name" placeholder="Product Name" value="<?php echo $name;?>">
                                 <span class="error">* <?php echo $nameErr;?></span>
                             </div>
@@ -200,6 +202,7 @@ if($q)
                         <div class="row">
                             <div class="col s5">&nbsp;</div>
                             <div class="col s4">
+                                Category:
                                 <input type="text" name="category" placeholder="Category" value="<?php echo $category;?>">
                                 <span class="error">* <?php echo $categoryErr;?></span>
                             </div>
@@ -209,6 +212,7 @@ if($q)
                         <div class="row">
                             <div class="col s5">&nbsp; </div>
                             <div class="col s2">
+                                Unit Manufactured:
                                 <input type="text" name="unit_m" placeholder="Unit Manufactured" value="<?php echo $unit;?>">
                                 <span class="error">* <?php echo $unitErr;?></span>
                             </div>
@@ -220,6 +224,7 @@ if($q)
                         <div class="row">
                             <div class="col s5">&nbsp; </div>
                             <div class="col s2">
+                                Market Price:
                                 <input type="text" name="price" placeholder="Market Price" value="<?php echo $price;?>">
                                 <span class="error">* <?php echo $priceErr;?></span>
                             </div>
@@ -230,6 +235,7 @@ if($q)
                         <div class="row">
                             <div class="col s5">&nbsp; </div>
                             <div class="col s4">
+                                Production Cost:
                                 <input type="text" name="prod_cost" placeholder="Production Cost" value="<?php echo $prod;?>">
                                 <span class="error">* <?php echo $prodErr;?></span>
                             </div>
