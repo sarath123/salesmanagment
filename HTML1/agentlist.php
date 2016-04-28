@@ -71,7 +71,7 @@ if($_SESSION['cat']=="admin")
                   echo '<div class="progress">
                       <div class="indeterminate"></div>
                  </div>';
-                  header( "refresh:3;url=manager.html" );
+                  header( "refresh:3;url=manager.php" );
               }
               else
               {

@@ -181,7 +181,7 @@ if($q)
                             <div class="col s2">
                                 Product ID:
                                 <input type="text" name="pid" placeholder="Product ID" value="<?php echo $pid;?>">
-                                <span class="error">* <?php echo $pidErr;?></span>
+                                <span class="Product id already exists">* <?php echo $pidErr;?></span>
                             </div>
                             <div class="col s5">&nbsp;</div>
                         </div>

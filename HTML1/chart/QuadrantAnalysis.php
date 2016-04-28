@@ -16,6 +16,8 @@ else if ($_SESSION['cat']=="manager")
 else 
     $_SESSION['home']="admin";
 
+
+
 ?>
 
 
@@ -99,10 +101,37 @@ else
                         $date= date("F", strtotime($runrows['DATE']));
                         if($m==1||$m==2||$m==3)
                             echo " ['$date', $sum], "; 
+                            echo " ['$date', $sum], ";
+                           echo "<p> $date </p>
+                    < p > sum < /p>";
+       
+                        
                     }
         
                     ?>
 
+                    <?php  
+                require '../config.php';
+                    $query="SELECT SUM(UNITSSOLD), MONTH(DATE) AS MONTH , DATE FROM sales GROUP BY MONTH(DATE) ";
+                    $return=mysql_query($query);
+       
+                    while($runrows= mysql_fetch_assoc($return))
+                    {  
+                        $sum = $runrows['SUM(UNITSSOLD)'];
+                        $m = $runrows['MONTH']; 
+                        $date= date("F", strtotime($runrows['DATE']));
+                        if($m==1||$m==2||$m==3)
+                            echo " ['$date', $sum], "; 
+                            echo " ['$date', $sum], ";
+                           echo "<p> $date </p>
+                    < p > sum < /p>";
+       
+                        
+                    }
+        ?>
+                    
+                    
+                    
                 ]);
 
                 // Set options for 1st quadrant pie chart.
@@ -130,7 +159,8 @@ else
                 var data = new google.visualization.DataTable();
                 data.addColumn('string', 'Topping');
                 data.addColumn('number', 'Slices');
-                data.addRows([<?php  
+                data.addRows([<?php 
+                    
                 
                     $query="SELECT SUM(UNITSSOLD), MONTH(DATE) AS MONTH , DATE FROM sales GROUP BY MONTH(DATE) ";
                     $return=mysql_query($query);
@@ -143,8 +173,9 @@ else
                         if($m==4||$m==5||$m==6)
                             echo " ['$date', $sum], "; 
                     }
-        
                     ?>
+
+
 
         ]);
 

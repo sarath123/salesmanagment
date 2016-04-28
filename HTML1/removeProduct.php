@@ -58,10 +58,10 @@ if($_SESSION['cat']=="agent")
     <body>
 
 
-
-
-
-
+        <form action="removeProduct.php" action="GET">
+            <input type="text" name="sid">
+            <input type="submit">
+        </form>
 
         <?php 
        require 'config.php';
@@ -90,7 +90,7 @@ if($_SESSION['cat']=="agent")
                   echo "<div>&nbsp</div>
                   <form action='modifyStock2.php' method='GET'>
                        <table   class=\"highlight container \" >
-                       <select name='sid'>
+                       <select name='sid1'>
                            <tr>
                             <th>Product ID</th>
                             <th>Name</th>
@@ -109,8 +109,9 @@ if($_SESSION['cat']=="agent")
                       $cost = $runrows['COST'];
                       $stock = $runrows['STOCK'];
                       $productioncost = $runrows['PRODUCTIONCOST'];
+                      //$pid=$_GET["sid"];
                      
-                      echo " 
+                      echo "
                       <option>
                    <tr>
                         <td><a href='removeProduct.php?sid=$pid'>$pid</a></td>

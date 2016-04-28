@@ -158,17 +158,22 @@ if($_SESSION['cat']=="agent")
       
         $stock=test_input($_POST["stock"]);
         $pid=test_input($_POST["pid"]);
-    
+        $unit=test_input($_POST["unitsm"]);
+        $oldstock=test_input($_POST["oldstock"]);
+        
       
-     
+         $stock+=$oldstock;
+         $unit+=$stock;
             
-   
+        
 
     
      
-        
-         
         $strSQL = "UPDATE product SET STOCK='$stock' WHERE PID=$pid";
+        $q=mysql_query($strSQL);
+   
+         
+        $strSQL = "UPDATE product SET UNITSM='$unit' WHERE PID=$pid";
         $q=mysql_query($strSQL);
    
 
